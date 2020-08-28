@@ -1,0 +1,26 @@
+name: bwa
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - bwa=0.7.17=hed695b0_7
+  - bzip2=1.0.8=h7b6447c_0
+  - ca-certificates=2020.7.22=0
+  - curl=7.69.1=hbc83047_0
+  - fastp=0.20.1=h8b12597_0
+  - htslib=1.9=h4da6232_3
+  - krb5=1.17.1=h173b8e3_0
+  - libcurl=7.69.1=h20c2e04_0
+  - libdeflate=1.2=h516909a_1
+  - libedit=3.1.20181209=hc058e9b_0
+  - libgcc-ng=9.1.0=hdf63c60_0
+  - libssh2=1.9.0=h1ba5d50_1
+  - libstdcxx-ng=9.1.0=hdf63c60_0
+  - ncurses=6.1=he6710b0_1
+  - openssl=1.1.1g=h7b6447c_0
+  - perl=5.26.2=h14c3975_0
+  - samtools=1.9=h10a08f8_12
+  - tk=8.6.10=hbc83047_0
+  - xz=5.2.5=h7b6447c_0
+  - zlib=1.2.11=h7b6447c_3
