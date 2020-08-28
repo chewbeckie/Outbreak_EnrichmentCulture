@@ -1,6 +1,7 @@
+# assembly-metaflye_and_polish.nf usage
+
 De novo metagenome assembly using ONT long-read data and correction with illumina short-read data.
 
-## Usage
 1. The individual illumina short-read libraries for each sample are merged by location using `gcat`
 - WG (EW1-5)
 - SH (EW6-10)

@@ -1,6 +1,7 @@
+# shortrd-map_and_bin.nf usage
+
 Short reads are mapped to the assembled contigs (SH and WG) by bwa. The BAM files are then used for binning with metaBAT.
 
-## Usage
 1. The path to each individual illumina short readsets were detailed in `index.csv`
 
 3. *(optional)* specify directory locations for input folder and output folder in `shortrd-map_and_bin.nf`
