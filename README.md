@@ -1,5 +1,4 @@
 # Enrichment culture dataset analysis
---------------------------------------------------------------------
 
 This folder contains the data and scripts used in the analysis for the enrichment culture dataset for the Outbreak project.
 
@@ -7,9 +6,9 @@ This folder contains the data and scripts used in the analysis for the enrichmen
 * **scripts** folder contains scripts and workflows used in the analysis
 * **testing_scripts** folder contains scripts in testing (not necessarily working)
 * **docs** folder contains usage/information of scripts and data
-* **archive** folder contains old and unused scripts and data
+* **archive** folder contains old and unused scripts and old data
 
-## Scripts usage
+### Scripts usage
 * [assembly-metaflye_and_polish.nf](docs/assembly-metaflye_and_polish.md)
 * [shortrd-map_and_bin.nf](docs/shortrd-map_and_bin.md)
 
