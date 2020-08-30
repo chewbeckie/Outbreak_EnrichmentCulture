@@ -24,3 +24,4 @@ dependencies:
   - tk=8.6.10=hbc83047_0
   - xz=5.2.5=h7b6447c_0
   - zlib=1.2.11=h7b6447c_3
+  - metabat2=2.15
