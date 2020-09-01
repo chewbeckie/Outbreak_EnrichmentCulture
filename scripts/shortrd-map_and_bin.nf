@@ -8,11 +8,11 @@
 Parameter
 /*
 //run table files with file name and the file to read1 and read2*/
-params.index = "$params.InputDir/index.csv"
+params.index //= "$params.InputDir/shortreads_SH.csv" or "$params.InputDir/shortreads_WG.csv"
 
 //path to reference genome
-params.contig = "$params.InputDir/reference_genomes/SH_assembly_edited.fa" // "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
-params.contigname = "SH" //"WG"
+params.contig //= "$params.InputDir/reference_genomes/SH_assembly_edited.fa" or "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
+params.contigname //= "SH" or "WG"
 contigs = file(params.contig)
 location = params.contigname
 
@@ -49,7 +49,7 @@ Channel.fromPath(params.index)
           """
 }
 
-// Step 2a - Read mapping to contigs
+// Step 2 - Read mapping to contigs
   process mapping {
         tag "$sampleId"
         publishDir "${params.OutputDir}/bamfiles", mode: 'copy'
@@ -92,7 +92,7 @@ process MetaBat2 {
 
 }
 
-// Step 4a - variant calling 
+// Step 4 - variant calling 
 process varcall {
         conda "bioconda::lofreq" //lofreq has different requirment from other packages
         tag "$bam.simpleName"

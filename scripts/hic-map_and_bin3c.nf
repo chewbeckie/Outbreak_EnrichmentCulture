@@ -4,10 +4,10 @@
 
 //define parameters
 //run table files with file name and the path to read1 and read2 of HiC data*/
-params.index = "$params.InputDir/hicreads.csv"
+params.index //="$params.InputDir/hicreads.csv"
 //path to reference genome
-params.contig = "$params.InputDir/reference_genomes/SH_assembly_edited.fa" // "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
-params.contigname = "SH" //"WG"
+params.contig  //="$params.InputDir/reference_genomes/SH_assembly_edited.fa" or "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
+params.contigname //="SH" //"WG"
 contigs = file(params.contig)
 location = params.contigname
 
@@ -98,13 +98,31 @@ process map_reads {
     set sampleId, file(reads) from paired_reads
 
     output:
-    file("*.bam") into results
+    file("*map2${location}.bam") into results
+    file("*sorted.bam") into bam_ch
 
     script:
     """
     bwa mem -t 16 -5SP $contigs $reads | samtools view -F 0x904 -bS - > ${sampleId}_map2${location}.bam
-    samtools sort -@16 -n -o ${sampleId}_map2${location}.sorted.bam ${sampleId}_map2${location}.bam
+    samtools sort -@ 16 -o ${sampleId}_map2${location}.sorted.bam -n ${sampleId}_map2${location}.bam
     """
-
 }
 
+// Step 5 - variant calling 
+process varcall {
+        conda "bioconda::lofreq" //lofreq has different requirment from other packages
+        tag "$bam.simpleName"
+        publishDir "${params.OutputDir}/varcall", mode: 'copy'
+
+    input:
+        path(bam) from bam_ch
+
+    output:
+        file("*.vcf")
+
+    script:
+        """
+        lofreq call -f $contigs -m 20 --no-default-filter -o ${bam.simpleName}.vcf $bam
+        lofreq filter -v 3 -V 500 -i ${bam.simpleName}.vcf -o ${bam.simpleName}.filt.vcf
+        """
+}
