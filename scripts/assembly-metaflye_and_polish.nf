@@ -8,9 +8,12 @@
 Parameter
 /*
 //run table files with sample name and paths to read1, read2 */
-params.shortreads = "$params.InputDir/shortreads.csv"
-//long read files
-params.longreads = "$params.InputDir/longreads.csv"
+params.shortreads = "$params.InputDir/shortreads_SH.csv" //"$params.InputDir/shortreads_WG.csv"
+//sample name and path to long read files
+params.longreads = "$params.InputDir/longreads_SH.csv" //"$params.InputDir/longreads_WG.csv"
+
+//name of contig to be made
+params.contigname = "SH" //WG
 
 //setting for metaflye
 params.gs = "100m"
@@ -37,8 +40,8 @@ process fastp {
     set sampleId, file(read1), file(read2) from trim_ch
 
   output:
-    set val(sampleId), file("trimmed_${sampleId}_R1.fastq.gz") into tread1_ch
-    set val(sampleId), file("trimmed_${sampleId}_R2.fastq.gz") into tread2_ch
+    file("trimmed_${sampleId}_R1.fastq.gz") into tread1_ch
+    file("trimmed_${sampleId}_R2.fastq.gz") into tread2_ch
     file("fastp.*") into fastpresult
 
   script:
@@ -47,6 +50,26 @@ process fastp {
       -o "trimmed_${sampleId}_R1.fastq.gz"\
       -O "trimmed_${sampleId}_R2.fastq.gz"
     """
+}
+
+// Step 2 - merging read1 and read2 together
+
+process merge{
+  publishDir "${params.OutputDir}/trimmed", mode: 'copy'
+
+  input:
+    path '*_R1.fastq.gz' from tread1_ch.toList()
+    path '*_R2.fastq.gz' from tread2_ch.toList()
+  
+  output:
+    set file("*_R1.fastq.gz"), file("*_R2.fastq.gz") into mergedreads_ch
+
+  script:
+    """
+    cat *_R1.fastq.gz > merged_${params.contigname}_R1.fastq.gz
+    cat *_R2.fastq.gz > merged_${params.contigname}_R2.fastq.gz
+    """
+
 }
 
 // Step 2 - Metaflye assembly
@@ -82,8 +105,7 @@ process ntedit_polish{
         publishDir "${params.OutputDir}/ntedit_polish", mode: 'copy'
 
     input:
-        set val(sampleId), file(tread1) from tread1_ch
-        set val(sampleId), file(tread2) from tread2_ch
+        set file(merged_read1), file(merged_read2) from mergedreads_ch
         set val(sampleId), file(graph) from graph_ch
 
     output:
@@ -96,7 +118,7 @@ process ntedit_polish{
     script:
       """
       flye_gfa_to_fasta_for_polishing.py $graph ${sampleId}_assembly.fa
-      nthits -c 1 --outbloom -p solidBF_${sampleId} -b 36 -k 40 -t 16 $tread1 $tread2
+      nthits -c 1 --outbloom -p solidBF_${sampleId} -b 36 -k 40 -t 16 $merged_read1 $merged_read2
       ntedit -m 1 -f ${sampleId}_assembly.fa -r solidBF_${sampleId}_k40.bf -b ${sampleId}_assembly
       flye_polished_fa_to_gfa.py $graph ${sampleId}_assembly_edited.fa polished_${sampleId}.gfa
       """

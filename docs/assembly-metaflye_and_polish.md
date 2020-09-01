@@ -2,13 +2,9 @@
 
 De novo metagenome assembly using ONT long-read data and correction with illumina short-read data.
 
-1. The individual illumina short-read libraries for each sample are merged by location using `gcat`
-- WG (EW1-5)
-- SH (EW6-10)
+1. provide path to the ONT long read files in `longreads_*.csv` and the merged short read-sets in `shortreads_*.csv`, which are both located in the `input_files` folder.
 
-2. provide path to the ONT long read files in `longreads.csv` and the merged short read-sets in `shortreads.csv`, which are both located in the `input_files` folder.
-
-3. setting the genome size (`params.gs`) in the `assembly-metaflye_and_polish.nf`, the genome size is set at 100m for the generation of WG/SH assemblies.
+2. set the genome size (`params.gs`) and contig name (`params.contigname`) in the `assembly-metaflye_and_polish.nf`, the genome size is set at 100m for the generation of WG/SH assemblies.
 
 4. *(optional)* specify directory locations for input folder and output folder in `assembly-metaflye_and_polish.config`.
 
@@ -19,5 +15,8 @@ nextflow run assembly-metaflye_and_polish.nf -c assembly-metaflye_and_polish.con
 
 ## Dependence
 * nextflow
-* conda
+* conda (dependencies are listed in `assembly-metaflye_and_polish.config`)
+    * flye=2.7
+    * fastp
+    * ntedit=1.3.2
 * python

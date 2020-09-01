@@ -1,8 +1,10 @@
 # shortrd-map_and_bin.nf usage
 
-Short reads are mapped to the assembled contigs (SH and WG) by bwa. The BAM files are then used for binning with metaBAT.
+Short reads are mapped to the assembled contigs (SH and WG) by bwa. The BAM files are then used for binning with metaBAT2.
 
-1. The path to each individual illumina short readsets were detailed in `index.csv`
+1. Input the path to each individual illumina short readsets in `shortreads_*.csv`. 
+
+2. Input the path to the assemblied genome using the `assembly-metaflye_and_polish.nf` script as `params.contig`. Also input a name for the name of the contig (`params.contigname`)
 
 3. *(optional)* specify directory locations for input folder and output folder in `shortrd-map_and_bin.nf`
 
@@ -14,3 +16,7 @@ nextflow run shortrd-map_and_bin.nf -c shortrd-map_and_bin.config -profile conda
 ## Dependence
 * nextflow
 * conda
+    * bwa
+    * fastp
+    * samtools v1.9
+    * metabat2

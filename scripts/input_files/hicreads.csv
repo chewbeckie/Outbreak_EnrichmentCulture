@@ -1,0 +1,2 @@
+sampleId,read1,read2
+hic,/home/johannabanana/Work_apps/nextflow_testing/input_files/test_reads/paired_HiC_EW_1.fq,/home/johannabanana/Work_apps/nextflow_testing/input_files/test_reads/paired_HiC_EW_2.fq
