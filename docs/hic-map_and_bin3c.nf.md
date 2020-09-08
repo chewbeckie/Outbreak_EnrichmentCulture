@@ -13,7 +13,7 @@ hiC_1,path/to/r1,path/to/r2
 
 3. run the nextflow workflow script by using the following command (activate pbs if running on the UTS HPC)
 ```
-nextflow run hic-map_and_bin3c.nf -c hic-map_and_bin3c.config \
+hic-map_and_bin3c.nf -c hic-map_and_bin3c.config \
  --index input_files/hic_index.csv --contig input_files/SH_assembly_edited.fa --contigname SH -profile conda,pbs
 ```
 

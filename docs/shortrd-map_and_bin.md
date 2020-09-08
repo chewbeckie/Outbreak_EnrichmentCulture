@@ -13,7 +13,7 @@ sample1,path/to/r1,path/to/r2
 
 3. run the nextflow workflow script by using the following command (activate pbs if running on the UTS HPC)
 ```
-nextflow run shortrd-map_and_bin.nf -c shortrd-map_and_bin.config \ 
+shortrd-map_and_bin.nf -c shortrd-map_and_bin.config \ 
     --path/to/runtable.csv --contig path/to/assembly_edited.fa --contigname SH \
     -profile conda,pbs
 ```

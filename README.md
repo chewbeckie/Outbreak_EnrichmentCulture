@@ -1,12 +1,12 @@
 # Enrichment culture dataset analysis
 
-This folder contains the data and scripts used in the analysis for the enrichment culture dataset for the Outbreak project.
+This directory contains the data and scripts used in the analysis for the enrichment culture dataset for the Outbreak project.
 
-* `data` folder contains metadata and small output data files generated from the analysis
-* `scripts` folder contains scripts and workflows used in the analysis
-* `testing_scripts` folder contains scripts in testing (not necessarily working)
-* `docs` folder contains usage/information of scripts and data
-* `archive` folder contains old and unused scripts and old data
+* `data` directory contains metadata and small output data files generated from the analysis
+* `bin` directory contains scripts and workflows used in the analysis
+* `testing_scripts` directory contains scripts in testing (not necessarily working)
+* `docs` directory contains usage/information of scripts and data
+* `archive` directory contains old and unused scripts and old data
 
 ### Scripts usage
 * [assembly-metaflye_and_polish.nf](docs/assembly-metaflye_and_polish.md)
@@ -17,7 +17,13 @@ This folder contains the data and scripts used in the analysis for the enrichmen
 
 ### `data` contents
 #### input_files
-Folder contains runtables that detail the locations and sample ID of the HiC, short-read and long-read dataset for this project on the UTS HPC computer
+* csv runtables containing the paths to sequencing files used in the workflow
+#### results
+* abricate antimicrobial gene screening results
+* checkM genome quality assessment graphs
+
+#### input_files
+directory contains runtables that detail the locations and sample ID of the HiC, short-read and long-read dataset for this project on the UTS HPC computer
 
 ### Log
 * *28 Aug 2020*
@@ -28,4 +34,9 @@ Folder contains runtables that detail the locations and sample ID of the HiC, sh
     * modified `shortrd-map_and_bin.nf` to take each of SH/WG set at a time
     * unified input runtables for different scripts
     * added workflow for hiC mapping (`script/hic-map_and_bin3c.nf`)
+
+* *4 Sep 2020*
+    * renamed `script` directory to `bin` and made scripts executable
+    * added ABRicate antimicrobial resistance genes screening results to `data/results`
+    * added qa graphs from `checkM` genome quality assessment to `data/results`
 

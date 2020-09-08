@@ -23,7 +23,7 @@ sample_a,path/to/longread
 
 5. run the nextflow workflow script by using the following command (activate pbs if running on the UTS HPC).
 ```
-nextflow run assembly-metaflye_and_polish.nf -c assembly-metaflye_and_polish.config \
+assembly-metaflye_and_polish.nf -c assembly-metaflye_and_polish.config \
  --shortreads shortreads.csv --longreads longreads.csv \
  --contigname SH \
  -profile conda,pbs
