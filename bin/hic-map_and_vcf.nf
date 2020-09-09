@@ -2,7 +2,9 @@
 
 /* created by Johanna Wong on 9 Jun 2020 */
 
-//define parameters
+/* define parameters*/
+//output directory location
+params.out
 //run table files with file name and the path to read1 and read2 of HiC data*/
 params.index //="$params.InputDir/hicreads.csv"
 //path to reference genome
@@ -27,7 +29,7 @@ Channel.fromPath(params.index)
 
     conda 'agbiome::bbtools'
     tag "$sampleId"
-    publishDir "${params.OutputDir}/trimmed_reads", mode: 'copy'
+    publishDir "${params.out}/trimmed_reads", mode: 'copy'
 
 
     input:
@@ -50,7 +52,7 @@ Channel.fromPath(params.index)
 //Step 2 - read trimming
 process fastp {
   tag "$sampleId"
-  publishDir "${params.OutputDir}/trimmed", mode: 'copy'
+  publishDir "${params.out}/trimmed", mode: 'copy'
 
   input:
     set sampleId, path(read1), path(read2) from trim_ch
@@ -72,7 +74,7 @@ process fastp {
 process reformat {
 
     tag "$sampleId"
-    publishDir "${params.OutputDir}/paired_reads", mode: 'copy'
+    publishDir "${params.out}/paired_reads", mode: 'copy'
     
     input:
     set sampleId, file(read1), file(read2) from trimmed_reads
@@ -91,7 +93,7 @@ process reformat {
 process map_reads {
 
     tag "$sampleId"
-    publishDir "${params.OutputDir}/bamfiles", mode: 'copy'
+    publishDir "${params.out}/bamfiles", mode: 'copy'
 
 
     input:
@@ -112,17 +114,34 @@ process map_reads {
 process varcall {
         conda "bioconda::lofreq" //lofreq has different requirment from other packages
         tag "$bam.simpleName"
-        publishDir "${params.OutputDir}/varcall", mode: 'copy'
+        publishDir "${params.out}/varcall", mode: 'copy'
 
     input:
         path(bam) from bam_ch
 
     output:
-        file("*.vcf")
+        file("*.vcf") into vcf_ch
 
     script:
         """
         lofreq call -f $contigs -m 20 --no-default-filter -o ${bam.simpleName}.vcf $bam
         lofreq filter -v 3 -V 500 -i ${bam.simpleName}.vcf -o ${bam.simpleName}.filt.vcf
+        """
+}
+
+// Step 5 - index and compress vcf
+process vcf_index {
+        tag "$vcf.simpleName"
+        publishDir "${params.out}/varcall", mode: 'copy'
+    
+    input:
+        file(vcf) from vcf_ch
+
+    output:
+        file("*")
+    
+    script:
+        """
+        bgzip --index -@ 16 $vcf
         """
 }

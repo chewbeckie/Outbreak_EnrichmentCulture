@@ -4,12 +4,11 @@
  * created by Johanna Wong 6 August 2020
  */
 
-/*
-Parameter
-/*
+/* define parameters*/
+//output directory location
+params.out
 //run table files with file name and the file to read1 and read2*/
 params.index //= "$params.InputDir/shortreads_SH.csv" or "$params.InputDir/shortreads_WG.csv"
-
 //path to reference genome
 params.contig //= "$params.InputDir/reference_genomes/SH_assembly_edited.fa" or "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
 params.contigname //= "SH" or "WG"
@@ -31,7 +30,7 @@ Channel.fromPath(params.index)
 //Step 1 - read trimming
   process fastp {
         tag "$sampleId"
-        publishDir "${params.OutputDir}/trimmed", mode: 'copy'
+        publishDir "${params.out}/trimmed", mode: 'copy'
 
         input:
           set sampleId, file(read1), file(read2) from trim_ch
@@ -52,7 +51,7 @@ Channel.fromPath(params.index)
 // Step 2 - Read mapping to contigs
   process mapping {
         tag "$sampleId"
-        publishDir "${params.OutputDir}/bamfiles", mode: 'copy'
+        publishDir "${params.out}/bamfiles", mode: 'copy'
 
     input:
         set val(sampleId), file(tread1) from tread1
@@ -75,10 +74,10 @@ Channel.fromPath(params.index)
 process MetaBat2 {
 
         tag "$location"
-        publishDir "${params.OutputDir}/metabat2", mode: 'copy'
+        publishDir "${params.out}/metabat2", mode: 'copy'
 
     input:
-        path '*'  from sortedbam.toList()
+        file('*')  from sortedbam.toList()
 
     output:
         file("metabat*")
@@ -96,13 +95,13 @@ process MetaBat2 {
 process varcall {
         conda "bioconda::lofreq" //lofreq has different requirment from other packages
         tag "$bam.simpleName"
-        publishDir "${params.OutputDir}/varcall", mode: 'copy'
+        publishDir "${params.out}/varcall", mode: 'copy'
 
     input:
-        path(bam) from bam4vcf
+        file(bam) from bam4vcf
 
     output:
-        file("*.vcf")
+        file("*.vcf") into vcf_ch
 
     script:
         """
@@ -111,3 +110,19 @@ process varcall {
         """       
 }
 
+// Step 5 - index and compress vcf
+process vcf_index {
+        tag "$vcf.simpleName"
+        publishDir "${params.out}/varcall", mode: 'copy'
+    
+    input:
+        file(vcf) from vcf_ch
+
+    output:
+        file("*")
+    
+    script:
+        """
+        bgzip --index -@ 16 $vcf
+        """
+}
