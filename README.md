@@ -17,20 +17,17 @@ This directory contains the data and scripts used in the analysis for the enrich
 
 ### `data` contents
 #### input_files
-* csv runtables containing the paths to sequencing files used in the workflow
+* directory contains runtables that detail the locations and sample ID of the HiC, short-read and long-read dataset for this project on the UTS HPC computer
 #### results
 * abricate antimicrobial gene screening results
 * checkM genome quality assessment graphs
 * mlplasmid prediction results
 * PlsDB plasmid identification results
 
-#### input_files
-directory contains runtables that detail the locations and sample ID of the HiC, short-read and long-read dataset for this project on the UTS HPC computer
-
 ### Log
 * *28 Aug 2020*
     * added workflow for long-read assembly (`script/assembly-metaflye_and_polish.nf`)
-    * added workflow for short-read mapping aSnd binning (`script/shortrd-map_and_bin.nf`)
+    * added workflow for short-read mapping and binning (`script/shortrd-map_and_bin.nf`)
 
 * *1 Sep 2020*
     * modified `shortrd-map_and_bin.nf` to take each of SH/WG set at a time
@@ -47,3 +44,6 @@ directory contains runtables that detail the locations and sample ID of the HiC,
     * added PlsDB sequence Mash plasmid identification results to `data/results`
     * renamed hiC workflow from `hic-map_and_bin3c.nf` to `hic-map_and_vcf.nf`
     * added index and bgzf steps in workflow
+
+* *16 Sep 2020*
+    * added new workflow that combined long-read assembly and short-read mapping and binning steps (`bin/assembly_map_vcall.nf`)

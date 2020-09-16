@@ -14,7 +14,7 @@ Short reads are mapped to the assembled contigs (SH and WG) by bwa. The BAM file
 The nextflow workflow script can be ran by using the following command (activate pbs if running on the UTS HPC)
 ```
 shortrd-map_and_bin.nf -c shortrd-map_and_bin.config \ 
-    --path/to/runtable.csv --contig path/to/assembly_edited.fa --contigname SH \
+    --index path/to/runtable.csv --contig path/to/assembly_edited.fa --contigname SH \
     --out output_files -profile conda,pbs
 ```
 
