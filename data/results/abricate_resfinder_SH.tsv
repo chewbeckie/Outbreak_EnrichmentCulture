@@ -1,0 +1,113 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
+input_files/SH_assembly_edited.fa	edge_1026	198635	199060	-	fosA_1	1-426/426	===============	0/0	100.00	96.71	resfinder	M85195	fosA	Fosfomycin
+input_files/SH_assembly_edited.fa	edge_1110	41611	42824	+	floR_2	1-1214/1215	===============	0/0	99.92	98.35	resfinder	AF118107	floR	Chloramphenicol;Florfenicol
+input_files/SH_assembly_edited.fa	edge_1110	44777	45592	+	sul2_2	1-816/816	===============	0/0	100.00	100.00	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_1110	52947	54422	+	msr(E)_1	1-1476/1476	===============	0/0	100.00	100.00	resfinder	FR751518	msr(E)	
+input_files/SH_assembly_edited.fa	edge_1110	54478	55362	+	mph(E)_1	1-885/885	===============	0/0	100.00	99.89	resfinder	DQ839391	mph(E)	Erythromycin
+input_files/SH_assembly_edited.fa	edge_1282	78430	79250	-	POM-1_1	1-821/821	===============	0/0	100.00	98.90	resfinder	GU002295	POM-1	
+input_files/SH_assembly_edited.fa	edge_1290	175677	176469	-	ampH_1	1-793/795	===============	0/0	99.75	98.11	resfinder	AJ276031	ampH	
+input_files/SH_assembly_edited.fa	edge_1303	68515	68933	+	fosA_3	1-420/420	========/======	1/1	99.76	99.05	resfinder	ACWO01000079	fosA	Fosfomycin
+input_files/SH_assembly_edited.fa	edge_1663	2565	3440	-	blaCTX-M-15_1	1-876/876	===============	0/0	100.00	100.00	resfinder	AY044436	blaCTX-M-15	Amoxicillin;Ampicillin;Aztreonam;Cefepime;Cefotaxime;Ceftazidime;Ceftriaxone;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_1728	2892	3752	+	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_1838	238	1074	-	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_1838	1074	1876	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_21	630625	631413	+	blaOXA-488_1	1-789/789	===============	0/0	100.00	99.87	resfinder	CP017969	blaOXA-488	
+input_files/SH_assembly_edited.fa	edge_244	72107	72870	-	erm(B)_18	1-762/762	========/======	2/2	100.00	98.95	resfinder	X66468	erm(B)	Erythromycin;Lincomycin;Clindamycin;Quinupristin;Pristinamycin_IA;Virginiamycin_S
+input_files/SH_assembly_edited.fa	edge_244	74025	74946	+	mph(A)_2	1-921/921	========/======	1/1	100.00	99.67	resfinder	U36578	mph(A)	Erythromycin;Azithromycin;Spiramycin;Telithromycin
+input_files/SH_assembly_edited.fa	edge_244	79048	79908	+	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_2441	3041	4273	-	mdf(A)_1	1-1233/1233	===============	0/0	100.00	98.95	resfinder	Y08743	mdf(A)	
+input_files/SH_assembly_edited.fa	edge_2461	17769	18914	+	blaCMY-42_1	1-1146/1146	===============	0/0	100.00	100.00	resfinder	HM146927	blaCMY-42	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Cefotaxime;Cefoxitin;Ceftazidime;Piperacillin;Piperacillin+Tazobactam;Ticarcillin;Ticarcillin+Clavulanic_acid
+input_files/SH_assembly_edited.fa	edge_2486	1	410	-	fosA_3	1-410/420	===============	0/0	97.62	100.00	resfinder	ACWO01000079	fosA	Fosfomycin
+input_files/SH_assembly_edited.fa	edge_266	534	1394	+	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_272	363510	364755	-	tet(A)_6	1-1247/1275	========/======	1/1	97.73	99.92	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_272	365758	366594	-	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_272	366594	367396	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_272	367457	368272	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_276	11854	12654	+	blaOXA-35_1	1-801/801	===============	0/0	100.00	100.00	resfinder	AF315786	blaOXA-35	Amoxicillin;Ampicillin;Aztreonam;Piperacillin
+input_files/SH_assembly_edited.fa	edge_276	13129	13995	+	sul1_5	1-867/867	===============	0/0	100.00	99.89	resfinder	EU780013	sul1	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_277	3034	3797	-	erm(B)_18	1-762/762	========/======	2/2	100.00	98.95	resfinder	X66468	erm(B)	Erythromycin;Lincomycin;Clindamycin;Quinupristin;Pristinamycin_IA;Virginiamycin_S
+input_files/SH_assembly_edited.fa	edge_2777	1007	1480	+	dfrA17_1	1-474/474	===============	0/0	100.00	100.00	resfinder	FJ460238	dfrA17	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_278	98	913	+	sul2_2	1-816/816	===============	0/0	100.00	100.00	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_278	974	1776	+	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.75	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_278	1776	2612	+	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_279	1680	2540	-	blaTEM-1B_1	1-861/861	===============	0/0	100.00	99.88	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_281	828	1310	+	dfrA14_5	1-483/483	===============	0/0	100.00	99.59	resfinder	DQ388123	dfrA14	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_281	2274	3089	-	aph(3')-Ia_1	1-816/816	===============	0/0	100.00	100.00	resfinder	V00359	aph(3')-Ia	
+input_files/SH_assembly_edited.fa	edge_281	4005	4841	-	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_281	4841	5643	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_281	5704	6519	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_282	480	1295	+	sul2_2	1-816/816	===============	0/0	100.00	100.00	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_284	93	916	-	lnu(F)_1	1-822/822	========/======	2/2	100.00	99.39	resfinder	EU118119	lnu(F)	Lincomycin
+input_files/SH_assembly_edited.fa	edge_284	1050	2012	-	ant(3'')-Ia_1	1-970/972	========/======	3/7	99.07	91.65	resfinder	X02340	ant(3'')-Ia	Streptomycin
+input_files/SH_assembly_edited.fa	edge_284	5684	6857	-	tet(X)_1	16-1167/1167	========/======	24/30	98.37	92.28	resfinder	GU014535	tet(X)	Doxycycline;Tetracycline;Minocycline;Tigecycline
+input_files/SH_assembly_edited.fa	edge_284	10438	11651	-	floR_2	1-1214/1215	===============	0/0	99.92	98.35	resfinder	AF118107	floR	Chloramphenicol;Florfenicol
+input_files/SH_assembly_edited.fa	edge_2995	708	1364	+	qnrS2_1	1-657/657	===============	0/0	100.00	100.00	resfinder	DQ485530	qnrS2	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3025	155480	155887	+	fosA_4	1-408/408	===============	0/0	100.00	99.02	resfinder	ACWU01000146	fosA	Fosfomycin
+input_files/SH_assembly_edited.fa	edge_3025	197109	197909	+	blaOXA-35_1	1-801/801	===============	0/0	100.00	100.00	resfinder	AF315786	blaOXA-35	Amoxicillin;Ampicillin;Aztreonam;Piperacillin
+input_files/SH_assembly_edited.fa	edge_3025	198384	199250	+	sul1_5	1-867/867	===============	0/0	100.00	99.89	resfinder	EU780013	sul1	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_3220	150402	151553	+	blaADC-25_1	1-1152/1152	===============	0/0	100.00	96.70	resfinder	EF016355	blaADC-25	
+input_files/SH_assembly_edited.fa	edge_3288	8420	9557	+	blaDHA-17_1	1-1140/1140	========/======	2/2	99.82	99.39	resfinder	KM087850	blaDHA-17	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Cefotaxime;Cefoxitin;Ceftazidime;Piperacillin;Piperacillin+Tazobactam;Ticarcillin;Ticarcillin+Clavulanic_acid
+input_files/SH_assembly_edited.fa	edge_3331	331	1146	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_3527	11136	11333	+	crpP_1	1-198/198	===============	0/0	100.00	98.99	resfinder	HM560971	crpP	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3528	13193	13390	+	crpP_1	1-198/198	===============	0/0	100.00	95.45	resfinder	HM560971	crpP	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3668	1	3090	-	oqxB_1	1-3090/3153	===============	0/0	98.00	98.96	resfinder	EU370913	oqxB	Nalidixic_acid;Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3668	3114	4289	-	oqxA_1	1-1176/1176	===============	0/0	100.00	97.62	resfinder	EU370913	oqxA	Nalidixic_acid;Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3692	2012	2668	-	qnrS2_1	1-657/657	===============	0/0	100.00	100.00	resfinder	DQ485530	qnrS2	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3789	2893	3549	-	qnrS2_1	1-657/657	===============	0/0	100.00	100.00	resfinder	DQ485530	qnrS2	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_3789	4851	6242	-	ant(3'')-Ii-aac(6')-IId_1	1-1392/1392	===============	0/0	100.00	93.17	resfinder	AF453998	ant(3'')-Ii-aac(6')-IId	Gentamicin;Streptomycin;Tobramycin
+input_files/SH_assembly_edited.fa	edge_3871	3194	3691	+	dfrA12_8	1-498/498	===============	0/0	100.00	100.00	resfinder	AM040708	dfrA12	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_3871	4089	4890	+	aadA2_1	18-819/819	===============	0/0	97.92	99.75	resfinder	NC_010870	aadA2	Streptomycin
+input_files/SH_assembly_edited.fa	edge_3871	5152	6411	+	cmlA1_1	1-1260/1260	===============	0/0	100.00	99.92	resfinder	M64556	cmlA1	Chloramphenicol
+input_files/SH_assembly_edited.fa	edge_3871	6494	7295	+	ant(3'')-Ia_1	171-972/972	..=============	0/0	82.51	99.75	resfinder	X02340	ant(3'')-Ia	Streptomycin
+input_files/SH_assembly_edited.fa	edge_3871	8975	9766	-	sul3_2	1-792/792	===============	0/0	100.00	100.00	resfinder	AJ459418	sul3	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_3899	8034	9179	+	blaCMY-42_1	1-1146/1146	===============	0/0	100.00	100.00	resfinder	HM146927	blaCMY-42	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Cefotaxime;Cefoxitin;Ceftazidime;Piperacillin;Piperacillin+Tazobactam;Ticarcillin;Ticarcillin+Clavulanic_acid
+input_files/SH_assembly_edited.fa	edge_3941	1386	2631	-	tet(A)_6	1-1247/1275	========/======	1/1	97.73	99.84	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_397	18723	19871	+	blaMIR-3_1	1-1146/1146	========/======	3/3	100.00	96.52	resfinder	AY743435	blaMIR-3	
+input_files/SH_assembly_edited.fa	edge_525	1368	2489	-	tet(39)_1	1-1122/1122	===============	0/0	100.00	100.00	resfinder	KT346360	tet(39)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_525	5374	6216	+	blaOXA-58_1	1-843/843	===============	0/0	100.00	100.00	resfinder	AY665723	blaOXA-58	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Imipenem;Meropenem
+input_files/SH_assembly_edited.fa	edge_525	9435	10250	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_553	500	1360	+	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_555	37510	38346	-	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_555	38346	39148	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_555	39209	40024	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_555	43565	44810	-	tet(A)_6	1-1247/1275	========/======	1/1	97.73	99.92	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_555	45664	46524	-	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_561	872	2117	+	tet(A)_6	1-1247/1275	========/======	1/1	97.73	99.92	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_562	107	909	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_562	970	1785	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_570	2810	3610	+	blaOXA-35_1	1-801/801	===============	0/0	100.00	100.00	resfinder	AF315786	blaOXA-35	Amoxicillin;Ampicillin;Aztreonam;Piperacillin
+input_files/SH_assembly_edited.fa	edge_570	4085	4951	+	sul1_5	1-867/867	===============	0/0	100.00	99.89	resfinder	EU780013	sul1	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_63	75386	76165	+	aph(3')-VIa_1	1-780/780	===============	0/0	100.00	100.00	resfinder	X07753	aph(3')-VIa	Amikacin
+input_files/SH_assembly_edited.fa	edge_63	112245	112697	-	ARR-7_1	1-453/453	===============	0/0	100.00	100.00	resfinder	FN397623	ARR-7	
+input_files/SH_assembly_edited.fa	edge_63	112822	113622	-	blaVIM-4_1	1-801/801	===============	0/0	100.00	100.00	resfinder	EU581706	blaVIM-4	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Cefepime;Cefixime;Cefotaxime;Cefoxitin;Ceftazidime;Ertapenem;Imipenem;Meropenem;Piperacillin;Piperacillin+Tazobactam
+input_files/SH_assembly_edited.fa	edge_63	126525	127163	+	catB7_1	1-639/639	===============	0/0	100.00	98.75	resfinder	AF036933	catB7	Chloramphenicol
+input_files/SH_assembly_edited.fa	edge_66	16193	16390	+	crpP_1	1-198/198	===============	0/0	100.00	95.45	resfinder	HM560971	crpP	Ciprofloxacin
+input_files/SH_assembly_edited.fa	edge_696	4808	6013	+	tet(B)_2	1-1206/1206	===============	0/0	100.00	100.00	resfinder	AF326777	tet(B)	Doxycycline;Tetracycline;Minocycline
+input_files/SH_assembly_edited.fa	edge_698	1945	2586	+	catA2_1	1-642/642	===============	0/0	100.00	96.11	resfinder	X53796	catA2	Chloramphenicol
+input_files/SH_assembly_edited.fa	edge_71	407476	408669	+	blaPAO_2	1-1194/1194	===============	0/0	100.00	99.25	resfinder	FJ666065	blaPAO	
+input_files/SH_assembly_edited.fa	edge_71	421025	421831	-	aph(3')-IIb_1	1-807/807	===============	0/0	100.00	98.76	resfinder	X90856	aph(3')-IIb	
+input_files/SH_assembly_edited.fa	edge_755	7164	8369	+	tet(B)_2	1-1206/1206	===============	0/0	100.00	100.00	resfinder	AF326777	tet(B)	Doxycycline;Tetracycline;Minocycline
+input_files/SH_assembly_edited.fa	edge_779	113057	114203	+	blaCMY-34_1	1-1146/1146	========/======	1/1	100.00	97.82	resfinder	EF394370	blaCMY-34	Amoxicillin;Amoxicillin+Clavulanic_acid;Ampicillin;Ampicillin+Clavulanic_acid;Cefotaxime;Cefoxitin;Ceftazidime;Piperacillin;Piperacillin+Tazobactam;Ticarcillin;Ticarcillin+Clavulanic_acid
+input_files/SH_assembly_edited.fa	edge_792	259953	260777	-	blaOXA-120_1	1-825/825	===============	0/0	100.00	99.39	resfinder	EU255289	blaOXA-120	
+input_files/SH_assembly_edited.fa	edge_798	3318	4145	+	blaOXA-72_1	1-828/828	===============	0/0	100.00	100.00	resfinder	AY739646	blaOXA-72	
+input_files/SH_assembly_edited.fa	edge_799	6271	7746	+	msr(E)_1	1-1476/1476	===============	0/0	100.00	100.00	resfinder	FR751518	msr(E)	
+input_files/SH_assembly_edited.fa	edge_799	7802	8686	+	mph(E)_1	1-885/885	===============	0/0	100.00	99.89	resfinder	DQ839391	mph(E)	Erythromycin
+input_files/SH_assembly_edited.fa	edge_808	118	978	-	aac(3)-IId_1	1-861/861	===============	0/0	100.00	99.88	resfinder	EU022314	aac(3)-IId	Gentamicin;Tobramycin
+input_files/SH_assembly_edited.fa	edge_809	2839	3312	+	dfrA17_1	1-474/474	===============	0/0	100.00	100.00	resfinder	FJ460238	dfrA17	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_809	3443	4231	+	aadA5_1	1-789/789	===============	0/0	100.00	100.00	resfinder	AF137361	aadA5	Streptomycin
+input_files/SH_assembly_edited.fa	edge_813	139	999	-	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_814	886	1359	+	dfrA17_1	1-474/474	===============	0/0	100.00	100.00	resfinder	FJ460238	dfrA17	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_814	1490	2278	+	aadA5_1	1-789/789	===============	0/0	100.00	100.00	resfinder	AF137361	aadA5	Streptomycin
+input_files/SH_assembly_edited.fa	edge_819	1404	2649	-	tet(A)_6	1-1247/1275	========/======	1/1	97.73	99.92	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_819	3967	4803	-	aph(6)-Id_1	1-837/837	===============	0/0	100.00	100.00	resfinder	M28829	aph(6)-Id	Streptomycin
+input_files/SH_assembly_edited.fa	edge_819	4803	5605	-	aph(3'')-Ib_5	1-804/804	========/======	1/1	99.88	99.88	resfinder	AF321551	aph(3'')-Ib	Streptomycin
+input_files/SH_assembly_edited.fa	edge_819	5666	6481	-	sul2_2	1-816/816	===============	0/0	100.00	99.88	resfinder	AY034138	sul2	Sulfamethoxazole
+input_files/SH_assembly_edited.fa	edge_819	6727	7587	-	blaTEM-1B_1	1-861/861	===============	0/0	100.00	100.00	resfinder	AY458016	blaTEM-1B	Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin
+input_files/SH_assembly_edited.fa	edge_819	9961	10821	+	aac(3)-IId_1	1-861/861	===============	0/0	100.00	99.88	resfinder	EU022314	aac(3)-IId	Gentamicin;Tobramycin
+input_files/SH_assembly_edited.fa	edge_820	7181	8426	+	tet(A)_6	1-1247/1275	========/======	5/5	97.57	99.52	resfinder	AF534183	tet(A)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_821	436	1357	+	mph(A)_2	1-921/921	========/======	1/1	100.00	99.67	resfinder	U36578	mph(A)	Erythromycin;Azithromycin;Spiramycin;Telithromycin
+input_files/SH_assembly_edited.fa	edge_825	2123	2596	+	dfrA17_1	1-474/474	===============	0/0	100.00	100.00	resfinder	FJ460238	dfrA17	Trimethoprim
+input_files/SH_assembly_edited.fa	edge_838	320297	321061	-	cphA7_1	1-765/765	===============	0/0	100.00	96.21	resfinder	AY227053	cphA7	
+input_files/SH_assembly_edited.fa	edge_841	1785070	1785723	-	cat_1	1-654/654	========/======	2/2	99.85	98.17	resfinder	M11587	cat	Chloramphenicol
+input_files/SH_assembly_edited.fa	edge_841	3711548	3712744	+	tet(J)_1	1-1197/1197	===============	0/0	100.00	99.33	resfinder	ACLE01000065	tet(J)	Doxycycline;Tetracycline
+input_files/SH_assembly_edited.fa	edge_924	81530	82390	+	blaSHV-145_1	1-861/861	===============	0/0	100.00	99.88	resfinder	JX013655	blaSHV-145	
