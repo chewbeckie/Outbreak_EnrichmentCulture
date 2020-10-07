@@ -20,10 +20,12 @@ params.contig //= "$params.InputDir/reference_genomes/SH_assembly_edited.fa" or 
 // setting for metaflye
 params.gs = "100m"
 
-/*Condition validations*/
+/*Condition validations----------------------------------------------------------------------------------------------------------------*/
 //if contigs were not provided, conditional assembly steps will run and the newly assembled contig will be used for contig for mapping
 if(params.contig){ contig_flag = true } else { contig_flag = false }
 if(contig_flag == true){contigs = file(params.contig)} else { contigs = file(newcontig) }
+
+
 
 /*Channels-----------------------------------------------------------------------------------------------------------------------------*/
 

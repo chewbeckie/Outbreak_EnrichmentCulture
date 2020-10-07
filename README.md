@@ -19,7 +19,7 @@ This directory contains the data and scripts used in the analysis for the enrich
 #### input_files
 * directory contains runtables that detail the locations and sample ID of the HiC, short-read and long-read dataset for this project on the UTS HPC computer
 #### results
-* abricate antimicrobial gene screening results
+* abricate antimicrobial gene screening results (using ncbi and resfinder databases)
 * checkM genome quality assessment graphs
 * mlplasmid prediction results
 * PlsDB plasmid identification results
