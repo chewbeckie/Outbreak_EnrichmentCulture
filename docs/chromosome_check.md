@@ -11,7 +11,7 @@ The nextflow workflow script can be ran by using the following command (activate
 ```
 chromosome_check.nf -c chromosome_check.config \ 
     --genome_list accession_no.txt --query contigs.fasta \
-    -profile pbs
+    -profiles pbs
 ```
 
 ## Dependence
