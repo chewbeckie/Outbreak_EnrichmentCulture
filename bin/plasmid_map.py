@@ -24,7 +24,7 @@ MIN_PLASMID_TAX_LINKS = 3
 MIN_PLASMID_PLASMID_LINKS = 2
 
 # fraction of reads that are Hi-C. TOOD: should be estimated from the dataset
-hic_fraction = 0.25
+hic_error_rate = 0.25
 
 
 gfa = gfapy.Gfa.from_file(sys.argv[1])
@@ -203,7 +203,7 @@ for link in tax_links:
     if link[1] == 'Proteobacteria': continue
     if tax_links[link] < 2: continue # don't believe anything seen only once
     # compute significance
-    expected = (hic_fraction * plasmid_counts[link[0]] * tax_counts[link[1]]) / (2*read_count)
+    expected = (hic_error_rate * plasmid_counts[link[0]] * tax_counts[link[1]]) / (2*read_count)
     log_cdf = stats.poisson.logcdf(expected,tax_links[link])
     tax_links_output.write(plasmid_names[link[0]]+'\t'+link[1])
     tax_links_output.write('\t'+str(-log_cdf)+'\t'+str(tax_links[link])+'\t'+str(expected)+'\t'+link[0]+'\n')
@@ -214,7 +214,7 @@ for link in tax_links:
 for plasmid in used_plasmid:
     for taxon in used_tax:
         if not (plasmid,taxon) in used_taxplas:
-            tax_links_output.write(plasmid_names[plasmid]+'\t'+taxon+'\t0\t0\t0\n')
+            tax_links_output.write(plasmid_names[plasmid]+'\t'+taxon+'\t0\t0\t0\t'+plasmid+'\n')
 
 for link in plasmid_links:
     if plasmid_links[link] < MIN_PLASMID_PLASMID_LINKS: continue
