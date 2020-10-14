@@ -7,10 +7,11 @@
 /*Parameters*/
 params.genome_list //accession number of genomes to download as database
 params.query //path to fasta file of contigs for mash search
+params.info //information of the genomes downloaded
 
 /*Channels*/
 Channel.fromPath(params.query)
-        .set{ query_ch}
+        .set{ query_ch }
 
 Channel.fromPath(params.genome_list)
         .splitText()
@@ -18,7 +19,7 @@ Channel.fromPath(params.genome_list)
         .into{ chr_ch ; count_ch}
 
 genome_count = count_ch.count()
-
+info = file(params.info)
 
 /*Processes*/
 
@@ -49,7 +50,7 @@ process mash_sketch {
     conda 'bioconda::mash'
 
     input:
-        file(genome) from genomes_ch.toList()
+        file(genome) from genomes_ch
     
     when:
         ready_flag = true
@@ -59,7 +60,23 @@ process mash_sketch {
   
     script:
     """
-    mash sketch $genome -o genome_collection.msh
+    mash sketch $genome
+    """
+}
+
+process mash_paste {
+    publishDir "genome_sketches", mode: 'copy'
+    conda 'bioconda::mash'
+
+    input:
+        file(sketches) from sketch_ch.toList()
+    
+    output:
+        file("genome_collection.msh") into ref_ch
+    
+    script:
+    """
+    mash paste genome_collection $sketches
     """
 }
 
@@ -68,14 +85,30 @@ process mash_dist {
     conda 'bioconda::mash'
 
     input:
-        path(ref) from sketch_ch
+        path(ref) from ref_ch
         file(query) from query_ch
+    
+    output:
+        file("*.tsv") into mash_result
+
+    script:
+    """
+    mash dist -i -v 0.1 -i 0.1 $ref $query > ${query.baseName}_mash.tsv
+    """
+}
+
+process result_collate{
+    publishDir "mash_dist", mode:'copy'
+
+    input:
+        file(mash_out) from mash_result
     
     output:
         file("*.tsv")
 
     script:
     """
-    mash dist -i $ref $query > ${query}_mash.tsv
+    chr_mash_result_edit.R $mash_out $info signf_mash_chr.tsv
     """
+
 }

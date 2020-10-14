@@ -19,37 +19,7 @@ Channel.fromPath(params.index)
         .map{row-> tuple(row.sampleId, file(row.read1), file(row.read2))}
         .into { samples_ch; trim_ch }
 
-//step 1: clean reads
-
-/*process clean_reads{
-    queue 'smallq'
-    memory '24 GB'
-    cpus 4
-    executor 'pbs'
-
-    conda 'agbiome::bbtools'
-    tag "$sampleId"
-    publishDir "${params.out}/trimmed_reads", mode: 'copy'
-
-
-    input:
-    set sampleId, file(read1), file(read2) from samples_ch
-
-    output:
-    set val(sampleId), file("clean_${sampleId}_1.fq"), file("clean_${sampleId}_2.fq") into trimmed_reads
-
-    script:
-    """
-    bbduk.sh in1=$read1 in2=$read2 ref=$params.adapterseq\
-    k=23 hdist=1 mink=11 ktrim=r tpe tbo \
-    ftm=5 qtrim=r trimq=10 \
-    threads=4 -Xmx20g\
-    out1=clean_${sampleId}_1.fq out2=clean_${sampleId}_2.fq
-    """
-}
-*/
-
-//Step 2 - read trimming
+//Step 1 - read trimming
 process fastp {
   tag "$sampleId"
   publishDir "${params.out}/trimmed", mode: 'copy'
@@ -69,7 +39,7 @@ process fastp {
     """
 }
 
-//step 3: reformat input into interleaved fastq
+//step 2: reformat input into interleaved fastq
 
 process reformat {
 
@@ -88,7 +58,51 @@ process reformat {
     """
 }
 
-//step 4: map reads to longread-assembled contigs
+//step 3: initial mapping for dedup
+
+process init_map {
+    tag "$sampleId"
+    publishDir "${params.out}/init_map", mode: 'copy'
+
+    input:
+    set sampleId, file(reads) from paired_reads
+
+    output:
+    set val(sampleId), file("*.bam") into inimap_ch
+
+    script:
+    """
+    bwa mem -t 16 $contigs -p $reads \
+    | samtools view -bS - \
+    | samtools sort -@ 8 -n \
+    | samtools fixmate -m - - \
+    | samtools sort -@ 8 > withdup_${sampleId}_map2${location}.bam 
+    """
+}
+
+
+//step 4: dedup and bam2fq
+process dedup {
+    tag "$sampleId"
+    publishDir "${params.out}/dedup_outputs", mode: 'copy'
+
+    input:
+    set val(sampleId), file(withdup) from inimap_ch
+
+    output:
+    file("*.bam")
+    set val(sampleId), file("*R1.fq"), file("*R2.fq") into dedup_ch
+
+    """
+    samtools markdup -r -s $withdup dedup_${sampleId}_map2${location}.bam 
+    samtools bam2fq dedup_${sampleId}_map2${location}.bam \
+        -1 dedup_${sampleId}_map2${location}_R1.fq \
+        -2 dedup_${sampleId}_map2${location}_R2.fq
+    """
+}
+
+
+//step 5: map deduped reads to longread-assembled contigs
 
 process map_reads {
 
@@ -97,7 +111,7 @@ process map_reads {
 
 
     input:
-    set sampleId, file(reads) from paired_reads
+    set val(sampleId), file(r1), file(r2) from dedup_ch
 
     output:
     file("*map2${location}.bam") into results
@@ -105,7 +119,7 @@ process map_reads {
 
     script:
     """
-    bwa mem -t 16 -5SP $contigs $reads | samtools view -F 0x904 -bS - > ${sampleId}_map2${location}.bam
+    bwa mem -t 16 -5SP $contigs $r1 $r2 | samtools view -F 0x904 -bS - > ${sampleId}_map2${location}.bam
     samtools sort -@ 16 -o ${sampleId}_map2${location}.sorted.bam -n ${sampleId}_map2${location}.bam
     """
 }
