@@ -206,7 +206,7 @@ for link in tax_links:
     expected = (hic_fraction * plasmid_counts[link[0]] * tax_counts[link[1]]) / (2*read_count)
     log_cdf = stats.poisson.logcdf(expected,tax_links[link])
     tax_links_output.write(plasmid_names[link[0]]+'\t'+link[1])
-    tax_links_output.write('\t'+str(-log_cdf)+'\t'+str(tax_links[link])+'\t'+str(expected)+'\n')
+    tax_links_output.write('\t'+str(-log_cdf)+'\t'+str(tax_links[link])+'\t'+str(expected)+'\t'+link[0]+'\n')
     used_plasmid[link[0]]=1
     used_tax[link[1]]=1
     used_taxplas[link]=1
