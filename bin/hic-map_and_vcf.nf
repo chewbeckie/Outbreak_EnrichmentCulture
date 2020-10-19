@@ -72,6 +72,7 @@ process init_map {
 
     script:
     """
+    bwa index index $contigs
     bwa mem -t 16 $contigs -p $reads \
     | samtools view -bS - \
     | samtools sort -@ 8 -n \
