@@ -24,7 +24,7 @@ MIN_PLASMID_TAX_LINKS = 3
 MIN_PLASMID_PLASMID_LINKS = 2
 
 # fraction of reads that are Hi-C. TOOD: should be estimated from the dataset
-hic_error_rate = 0.25
+hic_error_rate = 0.462 # estimated independently for this particular dataset
 
 
 gfa = gfapy.Gfa.from_file(sys.argv[1])
@@ -112,25 +112,36 @@ read_iter = bam.fetch(until_eof=True)
 next_read = next(read_iter)
 read_count = 0
 hic_count = 0
+all_proteus = 0
+cross_proteus = 0
 try:
     while True:
         # get a pair of aligned reads
         cur_read_1 = next_read
         next_read = next(read_iter)
+        # skip supplementary mappings
+        while next_read is not None and next_read.is_supplementary:
+            next_read = next(read_iter)
         if cur_read_1.reference_name is None: continue
         if cur_read_1.mapping_quality < MIN_MAPQ: continue
         if next_read.query_name == cur_read_1.query_name:
             cur_read_2 = next_read
             next_read = next(read_iter)
+            while next_read is not None and next_read.is_supplementary:
+                next_read = next(read_iter)
         else:
             cur_read_2 = None
-
+# HACK: estimate Hi-C error rate using the Proteus mirabilis contig
         if cur_read_2 is not None and cur_read_2.reference_name is not None:
             if cur_read_2.mapping_quality < MIN_MAPQ: continue
             tig1 = min(cur_read_1.reference_name,cur_read_2.reference_name)
             tig2 = max(cur_read_1.reference_name,cur_read_2.reference_name)
             if tig1 == tig2 and abs(cur_read_1.reference_start - cur_read_2.reference_start) > MIN_HIC_DISTANCE:
                 hic_count += 1
+            if tig1 == 'edge_841' or tig2 == 'edge_841':
+                all_proteus += 1
+                if tig1 != 'edge_841' or tig2 != 'edge_841':
+                    cross_proteus += 1
             contig_read_count[cur_read_1.reference_name] += 1
             contig_read_count[cur_read_2.reference_name] += 1
             contacts[(tig1,tig2)] += 1
@@ -140,7 +151,9 @@ except:
     pass
 print("Processed "+str(read_count)+" reads, of which "+str(hic_count)+" are putative within-contig Hi-C reads")
 hic_fraction = hic_count / read_count
-
+#proteus_crossfrac = cross_proteus / all_proteus
+#print("found "+str(proteus_crossfrac)+" % crosslinks out of "+str(all_proteus)+" total reads on the Proteus contig")
+#hic_error_rate = proteus_crossfrac
 # transform contig contacts to phage : taxon counts
 tax_links = {}
 plasmid_links = {}
