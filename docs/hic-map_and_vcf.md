@@ -1,6 +1,6 @@
 # hic-map_and_vcf.nf usage
 
-HiC readset are first preprocessed and merged into interleaved format and then mapped to assembled contigs (SH and WG) by bwa. The bam files are then used for variant calling. This script requires the following as inputs:
+HiC readset are first preprocessed and merged into interleaved format and then mapped to assembled contigs (SH and WG) by bwa. Deduplication was then performed on the bam files, the deduped bam files were then converted back to fastq files. Then, the fastq files were remapped onto the assembled contigs and then used for variant calling. This script requires the following as inputs:
 
 *  `--index` - a `.csv` runtable with information about the sample name, path to read1 and path to read 2 of each individual HiC readsets
     ```
