@@ -4,7 +4,8 @@ library(ggplot2)
 asdf<-read.table("tax_links.tsv",head=F,sep='\t')
 asdf$V3[is.infinite(asdf$V3)]<-max(asdf$V3[!is.infinite(asdf$V3)])
 neg_log10_pvalue<-log10(exp(asdf$V3))
-neg_log10_pvalue[neg_log10_pvalue>20]<-20
+neg_log10_pvalue[neg_log10_pvalue>7.5]<-7.5
+neg_log10_pvalue[neg_log10_pvalue<=1]<-0 # these are so insignificant that it may be better to avoid visual clutter / confusion?
 #asdf$V3[asdf$V3==0]=1
 #contacts<-asdf$V3
 (p <- ggplot(asdf, aes(V1, V2)) + geom_tile(aes(fill = neg_log10_pvalue),
