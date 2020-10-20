@@ -52,3 +52,8 @@ This directory contains the data and scripts used in the analysis for the enrich
 * *10 Oct 2020*
     * added new workflow for mash screen contigs against list of bacterial chromosome genomes (`bin/chromosome_check.nf`)
     * list of accession number downloaded for input of `chromosome_check.nf` is in `data/input_files/complete_assembly_enterobacteriaceae_chromosome_list.txt`
+
+* *20 Oct 2020*
+    * modified `hic-map_and_vcf.nf` to perform deduplication and remapping when generating bamfiles
+    * added R scripts `plsdb_mash_result_edit.R` and `chr_mash_result_edit.R` for reformating mash screen results
+    * added R script `plot_plasmid_contact_addAMR.R` for visualizing the plasmid-contact heatmap with AMR and plasmid typing annotation
