@@ -16,7 +16,7 @@ if(!require('tidyverse')){
 
 mash_output <- args[1] #mash results using plsdb.msh from PLSDB as reference
 pls_info <- args[2] #plsdb.tsv downloaded from PLSDB
-output_name <- args[3] 
+output_name <- args[3] #output e.g. "data/results/Signf_PlsDBMashDist_SH_Oct2020.tsv"
 
 mash <- read.table(mash_output)
 colnames(mash) <- c("ref", "query", "dist", "pvalue", "sharedhashes")

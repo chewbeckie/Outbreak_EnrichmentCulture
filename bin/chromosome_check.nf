@@ -6,12 +6,12 @@
 
 /*Parameters*/
 params.genome_list //accession number of genomes to download as database
-params.query //path to fasta file of contigs for mash search
-params.info //information of the genomes downloaded
+params.contigs //path to fasta file of contigs for mash search
+//params.info //information of the genomes downloaded
 
 /*Channels*/
-Channel.fromPath(params.query)
-        .set{ query_ch }
+Channel.fromPath(params.contigs)
+        .set{ contigs_ch }
 
 Channel.fromPath(params.genome_list)
         .splitText()
@@ -19,7 +19,7 @@ Channel.fromPath(params.genome_list)
         .into{ chr_ch ; count_ch}
 
 genome_count = count_ch.count()
-info = file(params.info)
+//info = file(params.info)
 
 /*Processes*/
 
@@ -46,11 +46,11 @@ process get_fasta {
 if(done_ch.count() == genome_count ){ready_flag = true} else {ready_flag = false}
 
 process mash_sketch {
-    publishDir "genome_sketches", mode: 'copy'
+    publishDir "sketches", mode: 'copy'
     conda 'bioconda::mash'
 
     input:
-        file(genome) from genomes_ch
+        file(contigs) from contigs_ch
     
     when:
         ready_flag = true
@@ -60,23 +60,7 @@ process mash_sketch {
   
     script:
     """
-    mash sketch $genome
-    """
-}
-
-process mash_paste {
-    publishDir "genome_sketches", mode: 'copy'
-    conda 'bioconda::mash'
-
-    input:
-        file(sketches) from sketch_ch.toList()
-    
-    output:
-        file("genome_collection.msh") into ref_ch
-    
-    script:
-    """
-    mash paste genome_collection $sketches
+    mash sketch -i $contigs
     """
 }
 
@@ -85,19 +69,19 @@ process mash_dist {
     conda 'bioconda::mash'
 
     input:
-        path(ref) from ref_ch
-        file(query) from query_ch
+        path(ref) from sketch_ch
+        file(query) from genomes_ch
     
     output:
         file("*.tsv") into mash_result
 
     script:
     """
-    mash dist -i -v 0.1 -i 0.1 $ref $query > ${query.baseName}_mash.tsv
+    mash dist -v 0.1 -d 0.1 $ref $query > ${query.baseName}_mash.tsv
     """
 }
 
-process result_collate{
+/*process result_collate{
     publishDir "mash_dist", mode:'copy'
 
     input:
@@ -111,4 +95,4 @@ process result_collate{
     chr_mash_result_edit.R $mash_out $info signf_mash_chr.tsv
     """
 
-}
+}*/

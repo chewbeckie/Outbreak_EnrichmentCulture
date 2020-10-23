@@ -50,6 +50,6 @@
 "edge_4028","IncFIB(pLF82-PhagePlasmid)_1, plLF82, NC_011917.1",NA,NA
 "edge_4030","pSCZE, NZ_CP051223.1",NA,NA
 "edge_4033","Col440I_1, Similar to NZ_CP024491.1",NA,NA
-"edge_555","IncN_1, pGMI17-001_1, NZ_CP028173.1","aph(6)-Id, aph(3)-Ib, sul2, tet(A), blaTEM-1B","Multi"
+"edge_555","IncN_1, pGMI17-001_1, NZ_CP028173.1","aph(6)-Id;aph(3)-Ib;sul2;tet(A);blaTEM-1B","Streptomycin;Streptomycin;Sulfamethoxazole;Doxycycline;Tetracycline;Amoxicillin;Ampicillin;Cephalothin;Piperacillin;Ticarcillin"
 "edge_778","Col156_1, pSUH-4, NZ_CP041341.1",NA,NA
 "edge_798","pAT205-, NZ_CP048016.1","blaOXA-72",NA

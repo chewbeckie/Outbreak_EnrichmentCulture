@@ -14,9 +14,9 @@ if(!require('tidyverse')){
   library(tidyverse)
 }
 
-mash_output <- args[1] #mash dist result "tmp_results/BacChrMashDist_SH_Oct2020.tsv"
-chr_info <- args[2] #complete genome info corresponding to msh "complete_prokaryotes_enterobacteriaceae.csv"
-output_name <- args[3] #output name "tmp_results/signf_BacChrMashDist_SH_Oct2020.tsv"
+mash_output <- args[1] #mash dist result of chromosome database from contigs_annotation.nf "SH_chr_mash.tsv"
+chr_info <- args[2] #complete genome info corresponding to msh "data/input_files/complete_assembly_enterobacteriaceae_chromosome_info.csv"
+output_name <- args[3] #output name "data/results/signf_BacChrMashDist_SH_Oct2020.tsv"
 
 mash <- read.table(mash_output)
 colnames(mash) <- c("ref", "query", "dist", "pvalue", "sharedhashes")
