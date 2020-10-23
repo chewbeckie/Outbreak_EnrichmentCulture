@@ -41,7 +41,7 @@ This directory contains the data and scripts used in the analysis for the enrich
     * `complete_assembly_enterobacteriaceae_chromosome_list.txt` (accession number of the chromosome database)
     * `complete_assembly_enterobacteriaceae_chromosome.msh`
     * `plsdb_20200629.tsv`
-    * `plsdb.msh`
+    * `plsdb.msh` (too big to upload to github, but this file can be downloaded from PlsDB directly)
 
 #### results
 * ABRicate antimicrobial gene screening results (using ncbi and resfinder databases)
