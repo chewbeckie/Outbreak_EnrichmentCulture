@@ -6,24 +6,20 @@
 
 /*Parameters*/
 params.name //user-defined contigs name (for output)
-params.contigs //path to fasta file of contigs
-params.krakendb //path to MiniKraken2 database (must be absolute path)
-params.plasmidlist //index csv to path of the plasmid genomes database fasta files (must be absolute path)
-params.chromosomelist //index csv to path of the chromosome genomes database fasta files (must be absolute path)
+params.contigs// ="$baseDir/input_files/SH_assembly_edited.fa" //path to fasta file of contigs
+params.krakendb// ="$baseDir/input_files/minikraken2_v1_8GB" //path to MiniKraken2 database (must be absolute path)
+params.plspath// ="$baseDir/input_files/plsdb_genomes/*.fa" // path + matching glob pattern of the plasmid genomes database fasta files
+params.chrpath// ="$baseDir/input_files/chr_genomes/*.fa" //path + matching glob pattern of the chromosome genomes database fasta files
 params.contigs_as_ref //use this variable if want to use contigs as reference instead of query for mash search
 
 /*Channels*/
 contigs = file(params.contigs)
 
-Channel.fromPath(params.plasmidlist)
-        .splitText()
-        .map { it.replaceFirst(/\n/,'') }
-        .into{ plasmids_ch}
+//Channel.fromPath(params.plspath)
+//        .set{ plasmids_ch }
 
-Channel.fromPath(params.chromosomelist)
-        .splitText()
-        .map { it.replaceFirst(/\n/,'') }
-        .into{chromosomes_ch}
+//Channel.fromPath(params.chrpath)
+//        .set{ chromosomes_ch }
 
 /*Processes*/
 
@@ -44,14 +40,33 @@ process kraken {
     --report ${params.name}_report.tsv --output ${params.name}.krakenout
     """
     }
-    
+
+//Comment:: when dealing with large plasmids/chromosomes database
+//it is needed to merge plasmids/chromosomes fasta files into one to avoid argument too long error
+
+process merge_fasta {
+    tag "${contigs}"
+    publishDir "${params.name}_results", mode: 'copy'
+
+    output:
+        file("pls*") into pls_collection
+        file("chr*") into chr_collection
+
+    script:
+    """
+    for f in $params.plspath; do cat \$f >> pls_genome_collection.fa; done
+    for f in $params.chrpath; do cat \$f >> chr_genome_collection.fa; done
+    """
+}
+
+
 process mash_plasmids {
     tag "${contigs}"
     publishDir "${params.name}_results", mode: 'copy'
     conda 'bioconda::mash'
 
     input:
-        path(plasmids) from plasmids_ch.toList()
+        file(pls_db) from pls_collection
 
     output:
         file("*.msh")
@@ -61,12 +76,12 @@ process mash_plasmids {
     if (params.contigs_as_ref){
         """
         mash sketch -i $contigs -o ${params.name}_ref.msh
-        mash dist ${params.name}_ref.msh $plasmids > ${params.name}_pls_mash_rev.tsv
+        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $pls_db > ${params.name}_pls_mash_rev.tsv
         """
     } else {
         """
-        mash sketch -i $plasmids -o pls_ref.msh
-        mash dist pls_ref.msh $contigs > ${params.name}_pls_mash.tsv
+        mash sketch -i $pls_db -o pls_ref.msh
+        mash dist -i -v 0.1 -d 0.1 pls_ref.msh $contigs > ${params.name}_pls_mash.tsv
         """
     }
 }
@@ -77,7 +92,7 @@ process mash_chromosomes {
     conda 'bioconda::mash'
 
     input:
-        path(chromosomes) from chromosomes_ch.toList()
+        file(chr_db) from chr_collection
 
     output:
         file("*.msh")
@@ -87,12 +102,12 @@ process mash_chromosomes {
     if (params.contigs_as_ref){
         """
         mash sketch -i $contigs -o ${params.name}_ref.msh
-        mash dist ${params.name}_ref.msh $chromosomes > ${params.name}_chr_mash_rev.tsv
+        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $chr_db > ${params.name}_chr_mash_rev.tsv
         """
     } else {
         """
-        mash sketch -i $chromosomes -o chr_ref.msh
-        mash dist chr_ref.msh $contigs > ${params.name}_chr_mash.tsv
+        mash sketch -i $chr_db -o chr_ref.msh
+        mash dist -i -v 0.1 -d 0.1 chr_ref.msh $contigs > ${params.name}_chr_mash.tsv
         """
     }
 }

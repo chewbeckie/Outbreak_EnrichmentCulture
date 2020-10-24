@@ -14,6 +14,7 @@ This directory contains the data and scripts used in the analysis for the enrich
 * [assembly_map_vcall.nf](docs/assembly_map_vcall.md) - for genome assembly using both short and long reads, as well as variant calling and metaBat
 * [hic-map_and_vcf.nf](docs/hic-map_and_vcf.md) - for hi-c reads processing, deduplication, mapping and variant calling (need assembled contigs as input)
 * [contigs_annotate.nf](docs/contigs_annotate.md) - for annotating the contigs by mash-screen chromosomes and plasmids database. AMR gene/pMLST gene screening are also carried out with ABRicate
+* `dl_fasta.nf` - for downloading genome fasta files from ncbi using list of ncbi accession number as input (e.g. `plsdb_acc.tsv` and `complete_assembly_enterobacteriaceae_chromosome_acc.tsv`). This script is used to download chromosomes and plasmids record for the mash screen by `contigs_annotate.nf`.
 
 #### supplementary scripts (need to incorporate into nextflow steps in the future):
 * `chr_mash_result_edit.R` - Used for processing output file from `contigs_annotate.nf`. For joining chromosome mash result with chromosome database info pulled from ncbi (`data/input_files/complete_assembly_enterobacteriaceae_chromosome_info.csv`). This script is used to make `data/results/signf_BacChrMashDist_SH_Oct2020.tsv`.
