@@ -18,11 +18,21 @@ User should supply the following (please don't use relative path, it won't work)
 * `chrpath` - path + matching glob pattern of the chromosome genomes database fasta files in the directory
 * `contigs_as_ref` (optional) - if used, a 'reverse' mash screen would be performed using contigs as reference
 
+* `plsmsh` - path to plasmid database .msh mash sketch file, if supplied, `contigs_as_ref` and `plspath` must be absent
+* `chrmsh` - path to chromosome database .msh mash sketch file, if supplied, `contigs_as_ref` and `chrpath` must be absent
+
 The nextflow workflow script can be ran by using the following command 
 ```
 ./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa \
 --krakendb minikraken2_v1_8GB --plspath input_files/plsdb_genomes/*.fa \ 
---chromosomelist input_files/chr_genomes/*.fa 
+--chrpath input_files/chr_genomes/*.fa 
+```
+
+Alternatively, if .msh sketches are available, use this command
+```
+./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa \
+--krakendb minikraken2_v1_8GB --plsmsh plsdb.msh \ 
+--chrpath chr.msh 
 ```
 
 ## Dependence

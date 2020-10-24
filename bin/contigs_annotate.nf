@@ -6,22 +6,117 @@
 
 /*Parameters*/
 params.name //user-defined contigs name (for output)
-params.contigs// ="$baseDir/input_files/SH_assembly_edited.fa" //path to fasta file of contigs
-params.krakendb// ="$baseDir/input_files/minikraken2_v1_8GB" //path to MiniKraken2 database (must be absolute path)
-params.plspath// ="$baseDir/input_files/plsdb_genomes/*.fa" // path + matching glob pattern of the plasmid genomes database fasta files
-params.chrpath// ="$baseDir/input_files/chr_genomes/*.fa" //path + matching glob pattern of the chromosome genomes database fasta files
+params.contigs //path to fasta file of contigs
+params.krakendb //path to MiniKraken2 database (must be absolute path)
+params.plspath // path + matching glob pattern of the plasmid genomes database fasta files
+params.chrpath //path + matching glob pattern of the chromosome genomes database fasta files
+params.plsmsh //path to plasmid database .msh mash sketch file, if supplied, contigs_as_ref and plspath must be absent
+params.chrmsh //path to chromosome database .msh mash sketch file, if supplied, contigs_as_ref and chrpath must be absent
 params.contigs_as_ref //use this variable if want to use contigs as reference instead of query for mash search
 
 /*Channels*/
 contigs = file(params.contigs)
 
-//Channel.fromPath(params.plspath)
-//        .set{ plasmids_ch }
-
-//Channel.fromPath(params.chrpath)
-//        .set{ chromosomes_ch }
-
 /*Processes*/
+
+//Comment:: when dealing with large plasmids/chromosomes database
+//it is needed to merge plasmids/chromosomes fasta files into one to avoid argument too long error
+process build_plsdb {
+    tag "${contigs}"
+    publishDir "${params.name}_results", mode: 'copy'
+    conda 'bioconda::mash'
+
+    output:
+        file("*.fa") into pls_fa
+        file("*.msh") into pls_db
+
+    script:
+    if(params.plsmsh){
+        """
+        cp $params.plsmsh pls_ref.msh
+        echo "" > empty.fa
+        """
+    }else{
+        """
+        for f in $params.plspath; do cat \$f >> pls_genome_collection.fa; done
+        mash sketch -i pls_genome_collection.fa -o pls_ref.msh
+        """
+    }
+}
+
+process mash_plasmids {
+    tag "${contigs}"
+    publishDir "${params.name}_results", mode: 'copy'
+    conda 'bioconda::mash'
+
+    input:
+        file(msh) from pls_db
+        file(fa) from pls_fa
+        
+    output:
+        file("*.tsv")
+    
+    script:
+    if (params.contigs_as_ref){
+        """
+        mash sketch -i $contigs -o ${params.name}_ref.msh
+        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $fa > ${params.name}_pls_mash_rev.tsv
+        """
+    } else {
+        """
+        mash dist -i -v 0.1 -d 0.1 $msh $contigs > ${params.name}_pls_mash.tsv
+        """
+    }
+}
+
+process build_chrdb {
+    tag "${contigs}"
+    publishDir "${params.name}_results", mode: 'copy'
+    conda 'bioconda::mash'
+
+    output:
+        file("*.fa") into chr_fa
+        file("*.msh") into chr_db
+
+    script:
+    if(params.chrmsh){
+        """
+        cp $params.chrmsh chr_ref.msh
+        echo "" > empty.fa
+        """
+    }else{
+        """
+        for f in $params.chrpath; do cat \$f >> chr_genome_collection.fa; done
+        mash sketch -i chr_genome_collection.fa -o chr_ref.msh
+        """
+    }
+}
+
+
+process mash_chromosomes {
+    tag "${contigs}"
+    publishDir "${params.name}_results", mode: 'copy'
+    conda 'bioconda::mash'
+
+    input:
+        file(msh) from chr_db
+        file(fa) from chr_fa
+        
+    output:
+        file("*.tsv")
+    
+    script:
+    if (params.contigs_as_ref){
+        """
+        mash sketch -i $contigs -o ${params.name}_ref.msh
+        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $fa > ${params.name}_chr_mash_rev.tsv
+        """
+    } else {
+        """
+        mash dist -i -v 0.1 -d 0.1 $msh $contigs > ${params.name}_chr_mash.tsv
+        """
+    }
+}
 
 process kraken {
     tag "${contigs}"
@@ -30,7 +125,7 @@ process kraken {
 
     output:
         file("*")
-        file("*.krakenout") into krakenout_ch
+        file("*.krakenout") into krakenout_ch //for adding genome_map.py step later
     
     script:
     """
@@ -39,77 +134,6 @@ process kraken {
     --memory-mapping --use-names \
     --report ${params.name}_report.tsv --output ${params.name}.krakenout
     """
-    }
-
-//Comment:: when dealing with large plasmids/chromosomes database
-//it is needed to merge plasmids/chromosomes fasta files into one to avoid argument too long error
-
-process merge_fasta {
-    tag "${contigs}"
-    publishDir "${params.name}_results", mode: 'copy'
-
-    output:
-        file("pls*") into pls_collection
-        file("chr*") into chr_collection
-
-    script:
-    """
-    for f in $params.plspath; do cat \$f >> pls_genome_collection.fa; done
-    for f in $params.chrpath; do cat \$f >> chr_genome_collection.fa; done
-    """
-}
-
-
-process mash_plasmids {
-    tag "${contigs}"
-    publishDir "${params.name}_results", mode: 'copy'
-    conda 'bioconda::mash'
-
-    input:
-        file(pls_db) from pls_collection
-
-    output:
-        file("*.msh")
-        file("*.tsv")
-
-    script:
-    if (params.contigs_as_ref){
-        """
-        mash sketch -i $contigs -o ${params.name}_ref.msh
-        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $pls_db > ${params.name}_pls_mash_rev.tsv
-        """
-    } else {
-        """
-        mash sketch -i $pls_db -o pls_ref.msh
-        mash dist -i -v 0.1 -d 0.1 pls_ref.msh $contigs > ${params.name}_pls_mash.tsv
-        """
-    }
-}
-
-process mash_chromosomes {
-    tag "${contigs}"
-    publishDir "${params.name}_results", mode: 'copy'
-    conda 'bioconda::mash'
-
-    input:
-        file(chr_db) from chr_collection
-
-    output:
-        file("*.msh")
-        file("*.tsv")
-
-    script:
-    if (params.contigs_as_ref){
-        """
-        mash sketch -i $contigs -o ${params.name}_ref.msh
-        mash dist -i -v 0.1 -d 0.1 ${params.name}_ref.msh $chr_db > ${params.name}_chr_mash_rev.tsv
-        """
-    } else {
-        """
-        mash sketch -i $chr_db -o chr_ref.msh
-        mash dist -i -v 0.1 -d 0.1 chr_ref.msh $contigs > ${params.name}_chr_mash.tsv
-        """
-    }
 }
 
 process abricate {
