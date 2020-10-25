@@ -16,23 +16,25 @@ User should supply the following (please don't use relative path, it won't work)
 * `krakendb` - path to kraken database
 * `plspath` - path + matching glob pattern of the plasmid genomes database fasta files in the directory
 * `chrpath` - path + matching glob pattern of the chromosome genomes database fasta files in the directory
-* `contigs_as_ref` (optional) - if used, a 'reverse' mash screen would be performed using contigs as reference
+* `contigs_as_ref` (optional) - if used, a 'reverse' mash screen would be performed using contigs as reference instead of query
+* `chr_info` - path to chromosome information file e.g. complete_assembly_enterobacteriaceae_chromosome_info.csv
+* `pls_info` - path to plasmid information file e.g. plsdb.tsv
 
 * `plsmsh` - path to plasmid database .msh mash sketch file, if supplied, `contigs_as_ref` and `plspath` must be absent
 * `chrmsh` - path to chromosome database .msh mash sketch file, if supplied, `contigs_as_ref` and `chrpath` must be absent
 
 The nextflow workflow script can be ran by using the following command 
 ```
-./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa \
---krakendb minikraken2_v1_8GB --plspath input_files/plsdb_genomes/*.fa \ 
---chrpath input_files/chr_genomes/*.fa 
+./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa --krakendb minikraken2_v1_8GB \
+--plspath input_files/plsdb_genomes/*.fa --chrpath input_files/chr_genomes/*.fa \
+--chr_info complete_assembly_enterobacteriaceae_chromosome_info.csv --pls_ino plsdb.tsv
 ```
 
 Alternatively, if .msh sketches are available, use this command
 ```
-./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa \
---krakendb minikraken2_v1_8GB --plsmsh plsdb.msh \ 
---chrpath chr.msh 
+./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa --krakendb minikraken2_v1_8GB \
+--plsmsh plsdb.msh --chrpath chr.msh \
+--chr_info complete_assembly_enterobacteriaceae_chromosome_info.csv --pls_ino plsdb.tsv
 ```
 
 ## Dependence

@@ -8,11 +8,13 @@
 params.name //user-defined contigs name (for output)
 params.contigs //path to fasta file of contigs
 params.krakendb //path to MiniKraken2 database (must be absolute path)
-params.plspath // path + matching glob pattern of the plasmid genomes database fasta files
+params.plspath //path + matching glob pattern of the plasmid genomes database fasta files
 params.chrpath //path + matching glob pattern of the chromosome genomes database fasta files
+params.chr_info //path to chromosome information file e.g. complete_assembly_enterobacteriaceae_chromosome_info.csv
+params.pls_info //path to plasmid information file e.g. plsdb.tsv
 params.plsmsh //path to plasmid database .msh mash sketch file, if supplied, contigs_as_ref and plspath must be absent
 params.chrmsh //path to chromosome database .msh mash sketch file, if supplied, contigs_as_ref and chrpath must be absent
-params.contigs_as_ref //use this variable if want to use contigs as reference instead of query for mash search
+params.contigs_as_ref //use this parameter if want to use contigs as reference instead of query for mash search
 
 /*Channels*/
 contigs = file(params.contigs)
@@ -151,19 +153,28 @@ process abricate {
     """
 }
 
-/***need to add step to summarize the results together
-/*process result_collage{
-    publishDir "mash_dist", mode:'copy'
+//summarize the results together (not for contigs_as_ref setting)
+process result_collage{
+    publishDir "${params.name}_results", mode: 'copy'
+    conda 'r::r-tidyverse'
 
     input:
-        file(mash_out) from mash_result
+        file(chr_mash_out) from chr_result
+        file(pls_mash_out) from pls_result
     
     output:
         file("*.tsv")
 
     script:
-    """
-    chr_mash_result_edit.R $mash_out $info signf_mash_chr.tsv
-    """
-
-}*/
+    if (params.contigs_as_ref){
+        """
+        chr_mash_result_edit_rev.R $chr_mash_out $params.chr_info ${params.name}_signf_mash_chr_rev.tsv
+        plsdb_mash_result_edit_rev.R $pls_mash_out $params.pls_info ${params.name}_signf_mash_pls_rev.tsv
+        """
+    }else{
+        """
+        chr_mash_result_edit.R $chr_mash_out $params.chr_info ${params.name}_signf_mash_chr.tsv
+        plsdb_mash_result_edit.R $pls_mash_out $params.pls_info ${params.name}_signf_mash_pls.tsv
+        """
+    }
+}
