@@ -1,68 +1,105 @@
 #!/usr/bin/env Rscript
+
 library(tidyverse)
 library(ggplot2)
 library(ComplexHeatmap)
 library(circlize)
 library(RColorBrewer)
 
+#------------------------------------------------------------------------------
+#define input and output here
+setwd("/mnt/Backup_ubby/WG_results/")
+
+#hic plasmid map.py result
+asdf_path <- "~/github/Outbreak_EnrichmentCulture/data/results/tax_links_WG.tsv"
+#ABRicate AMR gene screening result
+amr_path <- "WG_resfinder_amr.tsv"
+#ABRicate pMLST gene screening result
+pmlst_path <- "WG_plsfinder_pmlst.tsv"
+#output summary path (as tsv)
+output_path <- "WG_amr_pmlst_plasmid_summary.tsv"
+
+#------------------------------------------------------------------------------
 #input result from hic plasmid_map.py
-asdf<-read.table("tax_links.tsv",head=F,sep='\t')
+asdf<-read.table(asdf_path,head=F,sep='\t')
 asdf$V3[is.infinite(asdf$V3)]<-max(asdf$V3[!is.infinite(asdf$V3)])
 
 #process hic plasmid map result into matrix for making heatmap
-asdf_edit <- asdf %>% 
+asdf <- asdf %>% 
   mutate(neg_log10_pvalue = log10(exp(V3))) %>% 
-  select(2,6,neg_log10_pvalue) %>% 
-  spread(key = V2, value = neg_log10_pvalue, fill = 0.0)
+  #filter pvalue for visualization
+  mutate(neg_log10_pvalue = case_when(neg_log10_pvalue > 7.5 ~ 7.5,
+                                      neg_log10_pvalue <= 1  ~ 0,
+                                      TRUE ~ neg_log10_pvalue)) %>% 
+  filter(neg_log10_pvalue > 0) 
+  
+asdf_edit <- asdf %>% 
+  select(2,6,neg_log10_pvalue) %>%
+  set_names(c("genus", "contig", "neg_log10_pvalue")) %>% 
+  spread(key = genus, value = neg_log10_pvalue, fill = 0.0)
 
 asdf_mt <- as.matrix(asdf_edit[,-1])
-rownames(asdf_mt) <- asdf_edit$V6
+rownames(asdf_mt) <- asdf_edit$contig
 
 #------------------------------------------------------------------------------
 #input amr result from abricate
-amr<-read.table("abricate_resfinder_SH.tsv",sep='\t', fill = T) %>% 
-  select(V2, V14, V15) %>% 
-  rename("V6" = V2)
+amr<-read.table(amr_path,sep='\t', fill = T) %>% 
+  set_names(c("FILE","SEQUENCE","START","END","STRAND","GENE","COVERAGE",
+              "COVERAGE_MAP","GAPS","percentCOVERAGE","percentIDENTITY",
+              "DATABASE","ACCESSION","AMR","RESISTANCE")) %>% 
+  filter(percentIDENTITY >= 90 & percentCOVERAGE >=90) %>% 
+  select(SEQUENCE, AMR, RESISTANCE) %>% 
+  rename("contig" = SEQUENCE)
 
-#input plsdb mash result
-pls<-read_tsv("Signf_PlsDBMashDist_SH_Oct2020.tsv", col_names = T) %>% 
-  select(ref, pmlst, query)
+#input pmlst result from abricate
+pmlst<- read.table(pmlst_path,sep='\t', fill = T) %>% 
+  set_names(c("FILE","SEQUENCE","START","END","STRAND","pMLST","COVERAGE",
+              "COVERAGE_MAP","GAPS","percentCOVERAGE","percentIDENTITY",
+              "DATABASE","ACCESSION","PRODUCT","RESISTANCE")) %>% 
+  filter(percentIDENTITY >= 90 & percentCOVERAGE >=90) %>% 
+  select(SEQUENCE, pMLST) %>% 
+  rename("contig" = SEQUENCE)
 
-#link amr and plasmid results together
+#link amr, pmlst and plasmid results together
 key<-select(asdf, V1, V6) %>% 
+  set_names(c("plasmid", "contig")) %>% 
   unique() %>% 
-  left_join(.,amr, by = "V6") %>%
-  set_names(c("plasmid", "contig", "AMR", "resistance")) %>% 
+  left_join(.,amr, by = "contig") %>%
+  left_join(.,pmlst, by = "contig") %>% 
   group_by(contig) %>% 
   summarise(plasmid = plasmid,
-            AMR_genes = paste(AMR, collapse = ", "),
-            resistances = paste(resistance, collapse = ", ")) %>%
-  na_if("NA") %>%  na_if("") %>% unique()
+            AMR_genes = paste(AMR, collapse = ";"),
+            resistances = paste(RESISTANCE, collapse = ";"),
+            type = paste(pMLST)) %>%
+  mutate_at(vars(AMR_genes, resistances), ~sub('.*NA','NA',.)) %>% 
+  na_if(";") %>% na_if("NA") %>% 
+  unique()
 
+#write annotation to output
+write.table(key, output_path, row.names = F, sep = "\t")
+
+#additional------------------------------------------------------------------
 #rename some of the uncomprehensible columns
-key$resistances[key$contig == "edge_555"] <- "Multi"
-
-write.csv(key, "hicheatmap_anno_key.csv", row.names = F)
-
-#***added types of plasmids (by web search against Pubmlst pMLST)***
-#***will need to modify this part to make typing automatic instead***
-key <- read.csv("hicheatmap_anno_key+pmlst.csv")
+#key$resistances[key$contig == "edge_555"] <- "Multi"
 
 #----------------------------------------------------------------------------
 #define heatmap color
-col_fun <- colorRamp2(c(1:9), brewer.pal(9, "PuBu"))
+col_fun <- colorRamp2(c(1:7), brewer.pal(7, "PuBu"))
 
 #define amr annotation color
-amr_col=c(brewer.pal(4,"Set1"))
+ncol<-length(unique(key$AMR_genes)[-1])
+amr_col<-c(brewer.pal(ncol,"Set1"))
 names(amr_col) <- unique(key$AMR_genes)[-1]
 
 #define resistance annotation color
-res_col=c(brewer.pal(3, "Set1"))
+ncol<-length(unique(key$resistances)[-1])
+res_col<-c(brewer.pal(ncol, "Set1"))
 names(res_col) <- unique(key$resistances)[-1]
 
 #define pls type annotation color
-pls_col=c(brewer.pal(8, "Pastel1"))
-names(pls_col) <-sort(unique(key$type))
+ncol<-length(unique(key$type)[-1])
+pls_col=c(brewer.pal(ncol, "Set3"))
+names(pls_col) <-sort(unique(key$type)[-1])
 
 #define annotation
 anno <- HeatmapAnnotation(AMRgene = key$AMR_genes,
@@ -77,16 +114,11 @@ anno <- HeatmapAnnotation(AMRgene = key$AMR_genes,
 column_labels <- structure(key$plasmid, names = key$contig)
 
 #draw heatmap
-hp <- Heatmap(t(asdf_mt), name = "-log10(pvalue)", 
+Heatmap(t(asdf_mt), name = "-log10(pvalue)", 
         show_row_dend = F, show_column_dend = F, 
         col = col_fun,
         row_names_side = "left",
         bottom_annotation = anno,
         column_labels = column_labels, column_names_rot = -45,
         column_names_gp = gpar(fontsize = 10),
-        heatmap_legend_param = list(direction = "horizontal"))
-
-#draw heatmap with legends
-ComplexHeatmap::draw(hp, merge_legend = TRUE,
-                     heatmap_legend_side = "right",
-                     annotation_legend_side = "right")
+        heatmap_legend_param = list(direction = "vertical"))

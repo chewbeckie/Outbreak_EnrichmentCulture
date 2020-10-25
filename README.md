@@ -17,8 +17,6 @@ This directory contains the data and scripts used in the analysis for the enrich
 * `dl_fasta.nf` - for downloading genome fasta files from ncbi using list of ncbi accession number as input (e.g. `plsdb_acc.tsv` and `complete_assembly_enterobacteriaceae_chromosome_acc.tsv`). This script is used to download chromosomes and plasmids record for the mash screen by `contigs_annotate.nf`.
 
 #### supplementary scripts (need to incorporate into nextflow steps in the future):
-* `chr_mash_result_edit.R` - Used for processing output file from `contigs_annotate.nf`. For joining chromosome mash result with chromosome database info pulled from ncbi (`data/input_files/complete_assembly_enterobacteriaceae_chromosome_info.csv`). This script is used to make `data/results/signf_BacChrMashDist_SH_Oct2020.tsv`.
-* `plsdb_mash_result_edit.R` - Used for processing output file from `contigs_annotate.nf`. For joining plsdb mash result with plasmid info pulled from PlsDB (`data/input_files/plsdb_20200629.tsv`). This script is used to make `data/results/Signf_PlsDBMashDist_SH_Oct2020.tsv`.
 * `plasmid_map.py` - Used to map plasmid-bacteria linkage. Used hi-c bam-file, kraken output file, plasmid output from `plsdb_mash_result_edit.R` as input.
 * `plot_plasmid_contact.R` - plot plasmid linkage heatmap using output of `plasmid_map.py`.
 * `plot_plasmid_contact_addAMR.R` - plot plasmid linkage heatmap and add AMR annotation. Need R > 4.0 and the ComplexHeatmap package.
@@ -41,18 +39,19 @@ This directory contains the data and scripts used in the analysis for the enrich
     * `complete_assembly_enterobacteriaceae_chromosome_info.csv`
     * `complete_assembly_enterobacteriaceae_chromosome_list.txt` (accession number of the chromosome database)
     * `complete_assembly_enterobacteriaceae_chromosome.msh`
-    * `plsdb_20200629.tsv`
-    * `plsdb.msh` (too big to upload to github, but this file can be downloaded from PlsDB directly)
+    * `plsdb_acc.tsv` (accession number of the plasmid database)
+    * `plsdb.tsv` (msh file is too big to upload to github, but this file can be downloaded from PlsDB directly)
 
 #### results
-* ABRicate antimicrobial gene screening results (using ncbi and resfinder databases)
+* contigs_annotate.nf results
+    * kraken2 results
+    * ABRicate antimicrobial gene screening results (using resfinder databases)
+    * PlsDB plasmid mash screen results (using contigs as query and reference)
+    * chromosome mash screen results (using contigs as query and reference)
+    * plasmid-AMR-bacteria linkage summary table
+    * plasmid-AMR-bacteria linkage heatmap figure
 * checkM genome quality assessment graphs
-* mlplasmid prediction results
-* PlsDB plasmid mash screen results
-* chromosome mash screen results
-* plasmid hic linkage output tables
-* plasmid-AMR-bacteria linkage summary table
-* plasmid-AMR-bacteria linkage heatmap
+* plasmid_map.py hic linkage output tables
 
 
 ### Log

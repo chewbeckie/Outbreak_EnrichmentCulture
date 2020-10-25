@@ -1,0 +1,124 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
+input_files/SH_assembly_edited.fa	edge_1026	198635	199060	-	fosA	1-426/426	===============	0/0	100.00	96.71	ncbi	NG_050405.1	fosfomycin resistance glutathione transferase FosA	FOSFOMYCIN
+input_files/SH_assembly_edited.fa	edge_1110	41611	42825	+	floR	1-1215/1215	===============	0/0	100.00	100.00	ncbi	NG_047869.1	chloramphenicol/florfenicol efflux MFS transporter FloR	CHLORAMPHENICOL;FLORFENICOL
+input_files/SH_assembly_edited.fa	edge_1110	44777	45592	+	sul2	1-816/816	===============	0/0	100.00	100.00	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_1110	52947	54422	+	msr(E)	1-1476/1476	===============	0/0	100.00	100.00	ncbi	NG_048007.1	ABC-F type ribosomal protection protein Msr(E)	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_1110	54478	55362	+	mph(E)	1-885/885	===============	0/0	100.00	99.89	ncbi	NG_064660.1	Mph(E) family macrolide 2'-phosphotransferase	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_1282	78390	79250	-	blaPOM-1	1-861/861	===============	0/0	100.00	99.30	ncbi	NG_049974.1	subclass B3 metallo-beta-lactamase POM-1	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_1290	175677	176469	-	blaOXA-726	1-793/795	===============	0/0	99.75	98.61	ncbi	NG_062247.1	OXA-12 family class D beta-lactamase OXA-726	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_1303	68515	68933	+	fosA_gen	1-420/420	========/======	1/1	99.76	99.05	ncbi	NG_047884.1	FosA family fosfomycin resistance glutathione transferase	FOSFOMYCIN
+input_files/SH_assembly_edited.fa	edge_1663	2565	3440	-	blaCTX-M-15	1-876/876	===============	0/0	100.00	100.00	ncbi	NG_048935.1	class A extended-spectrum beta-lactamase CTX-M-15	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_1728	2892	3752	+	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_1838	238	1074	-	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_1838	1074	1889	-	aph(3'')-Ib	12-828/828	========/======	1/1	98.55	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_1841	116	1288	+	blaMCA	1-1173/1173	===============	0/0	100.00	99.49	ncbi	NG_055474.1	MCA family class C beta-lactamase	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_21	630625	631413	+	blaOXA-488	1-789/789	===============	0/0	100.00	99.87	ncbi	NG_049768.1	OXA-50 family oxacillin-hydrolyzing class D beta-lactamase OXA-488	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_244	72107	72844	-	erm(B)	1-738/738	===============	0/0	100.00	99.86	ncbi	NG_047804.1	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(B)	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_244	74025	74946	+	mph(A)	1-921/921	========/======	1/1	100.00	99.67	ncbi	NG_047986.1	Mph(A) family macrolide 2'-phosphotransferase	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_244	79048	79908	+	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_2461	17769	18914	+	blaCMY-42	1-1146/1146	===============	0/0	100.00	100.00	ncbi	NG_048837.1	class C extended-spectrum beta-lactamase CMY-42	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_2486	1	410	-	fosA_gen	1-410/420	===============	0/0	97.62	100.00	ncbi	NG_047884.1	FosA family fosfomycin resistance glutathione transferase	FOSFOMYCIN
+input_files/SH_assembly_edited.fa	edge_266	534	1394	+	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_272	363482	364680	-	tet(A)	1-1200/1200	========/======	1/1	99.92	99.92	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_272	365758	366594	-	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_272	366594	367420	-	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_272	367457	368272	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_276	11219	11773	+	aac(6')-Ib-AKT	1-555/555	===============	0/0	100.00	99.82	ncbi	NG_052358.1	AAC(6')-Ib family aminoglycoside 6'-N-acetyltransferase	AMIKACIN;KANAMYCIN;TOBRAMYCIN
+input_files/SH_assembly_edited.fa	edge_276	11854	12654	+	blaOXA-35	1-801/801	===============	0/0	100.00	100.00	ncbi	NG_049642.1	OXA-10 family oxacillin-hydrolyzing class D extended-spectrum beta-lactamase OXA-35	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_276	13156	13995	+	sul1	1-840/840	===============	0/0	100.00	100.00	ncbi	NG_048082.1	sulfonamide-resistant dihydropteroate synthase Sul1	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_277	3034	3771	-	erm(B)	1-738/738	===============	0/0	100.00	99.86	ncbi	NG_047804.1	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(B)	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_2777	1007	1480	+	dfrA17	1-474/474	===============	0/0	100.00	99.79	ncbi	NG_047710.1	trimethoprim-resistant dihydrofolate reductase DfrA17	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_278	98	913	+	sul2	1-816/816	===============	0/0	100.00	100.00	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_278	950	1776	+	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.76	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_278	1776	2612	+	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_279	1680	2540	-	blaTEM-1	1-861/861	===============	0/0	100.00	99.88	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_281	837	1310	+	dfrA14	1-474/474	===============	0/0	100.00	100.00	ncbi	NG_056035.1	trimethoprim-resistant dihydrofolate reductase DfrA14	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_281	2274	3089	-	aph(3')-Ia	1-816/816	===============	0/0	100.00	100.00	ncbi	NG_047430.1	aminoglycoside O-phosphotransferase APH(3')-Ia	KANAMYCIN
+input_files/SH_assembly_edited.fa	edge_281	4005	4841	-	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_281	4841	5667	-	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_281	5704	6519	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_282	480	1295	+	sul2	1-816/816	===============	0/0	100.00	100.00	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_284	93	916	-	lnu(F)	1-822/822	========/======	2/2	100.00	99.27	ncbi	NG_047927.1	lincosamide nucleotidyltransferase Lnu(F)	LINCOSAMIDE
+input_files/SH_assembly_edited.fa	edge_284	1048	1839	-	aadA2	1-792/792	===============	0/0	100.00	98.74	ncbi	NG_051846.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA2	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_284	5684	6863	-	tet(X)	1-1158/1158	========/======	24/30	99.65	96.71	ncbi	NG_065852.1	tetracycline-inactivating monooxygenase Tet(X)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_284	10437	11651	-	floR	1-1215/1215	===============	0/0	100.00	100.00	ncbi	NG_047869.1	chloramphenicol/florfenicol efflux MFS transporter FloR	CHLORAMPHENICOL;FLORFENICOL
+input_files/SH_assembly_edited.fa	edge_2856	1464	2636	-	blaMCA	1-1173/1173	===============	0/0	100.00	99.49	ncbi	NG_055474.1	MCA family class C beta-lactamase	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_2995	708	1364	+	qnrS2	1-657/657	===============	0/0	100.00	100.00	ncbi	NG_050544.1	quinolone resistance pentapeptide repeat protein QnrS2	QUINOLONE
+input_files/SH_assembly_edited.fa	edge_3025	155480	155887	+	fosA-354827590	1-408/408	===============	0/0	100.00	99.02	ncbi	NG_047883.1	FosA family fosfomycin resistance glutathione transferase	FOSFOMYCIN
+input_files/SH_assembly_edited.fa	edge_3025	196474	197028	+	aac(6')-Ib-AKT	1-555/555	===============	0/0	100.00	99.82	ncbi	NG_052358.1	AAC(6')-Ib family aminoglycoside 6'-N-acetyltransferase	AMIKACIN;KANAMYCIN;TOBRAMYCIN
+input_files/SH_assembly_edited.fa	edge_3025	197109	197909	+	blaOXA-35	1-801/801	===============	0/0	100.00	100.00	ncbi	NG_049642.1	OXA-10 family oxacillin-hydrolyzing class D extended-spectrum beta-lactamase OXA-35	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3025	198411	199250	+	sul1	1-840/840	===============	0/0	100.00	100.00	ncbi	NG_048082.1	sulfonamide-resistant dihydropteroate synthase Sul1	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_319	133383	134516	+	blaEC-5	1-1134/1134	===============	0/0	100.00	99.38	ncbi	NG_049085.1	cephalosporin-hydrolyzing class C beta-lactamase EC-5	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3220	150402	151553	+	blaADC-32	1-1152/1152	===============	0/0	100.00	99.57	ncbi	NG_050717.1	class C extended-spectrum beta-lactamase ADC-32	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3288	8420	9557	+	blaDHA-17	1-1140/1140	========/======	2/2	99.82	99.39	ncbi	NG_049062.1	class C beta-lactamase DHA-17	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3331	331	1146	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_3527	11136	11333	+	crpP	1-198/198	===============	0/0	100.00	98.99	ncbi	NG_062203.1	ciprofloxacin resistance protein CrpP	FLUOROQUINOLONE
+input_files/SH_assembly_edited.fa	edge_3528	13193	13390	+	crpP	1-198/198	===============	0/0	100.00	95.45	ncbi	NG_062203.1	ciprofloxacin resistance protein CrpP	FLUOROQUINOLONE
+input_files/SH_assembly_edited.fa	edge_3588	17230	18018	-	ant(3'')-IIa	1-789/789	===============	0/0	100.00	99.37	ncbi	NG_054646.1	aminoglycoside nucleotidyltransferase ANT(3'')-IIa	SPECTINOMYCIN;STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_3668	1	3090	-	oqxB20	1-3090/3153	===============	0/0	98.00	99.45	ncbi	NG_050439.1	multidrug efflux RND transporter permease subunit OqxB20	PHENICOL;QUINOLONE
+input_files/SH_assembly_edited.fa	edge_3668	3114	4289	-	oqxA6	1-1176/1176	===============	0/0	100.00	97.96	ncbi	NG_050424.1	multidrug efflux RND transporter periplasmic adaptor subunit OqxA6	PHENICOL;QUINOLONE
+input_files/SH_assembly_edited.fa	edge_3692	2012	2668	-	qnrS2	1-657/657	===============	0/0	100.00	100.00	ncbi	NG_050544.1	quinolone resistance pentapeptide repeat protein QnrS2	QUINOLONE
+input_files/SH_assembly_edited.fa	edge_3733	39335	40481	+	cepS	1-1149/1149	========/======	1/2	99.83	95.73	ncbi	NG_047629.1	cephalosporin-hydrolyzing class C beta-lactamase CepS	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3789	2893	3549	-	qnrS2	1-657/657	===============	0/0	100.00	100.00	ncbi	NG_050544.1	quinolone resistance pentapeptide repeat protein QnrS2	QUINOLONE
+input_files/SH_assembly_edited.fa	edge_3789	4851	5405	-	aac(6')-Ib-AKT	1-555/555	===============	0/0	100.00	99.82	ncbi	NG_052057.1	AAC(6')-Ib family aminoglycoside 6'-N-acetyltransferase	AMIKACIN;KANAMYCIN;TOBRAMYCIN
+input_files/SH_assembly_edited.fa	edge_3789	5437	6242	-	aadA16	1-806/846	===============	0/0	95.27	99.88	ncbi	NG_047339.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA16	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_3871	3194	3691	+	dfrA12	1-498/498	===============	0/0	100.00	100.00	ncbi	NG_047689.1	trimethoprim-resistant dihydrofolate reductase DfrA12	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_3871	4099	4890	+	aadA2	1-792/792	===============	0/0	100.00	99.87	ncbi	NG_047343.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA2	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_3871	5152	6411	+	cmlA1	1-1260/1260	===============	0/0	100.00	99.92	ncbi	NG_047648.1	chloramphenicol efflux MFS transporter CmlA1	CHLORAMPHENICOL
+input_files/SH_assembly_edited.fa	edge_3871	6504	7295	+	aadA1	1-792/792	===============	0/0	100.00	99.87	ncbi	NG_052266.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA1	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_3871	8975	9766	-	sul3	1-792/792	===============	0/0	100.00	100.00	ncbi	NG_048120.1	sulfonamide-resistant dihydropteroate synthase Sul3	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_3899	8034	9179	+	blaCMY-42	1-1146/1146	===============	0/0	100.00	100.00	ncbi	NG_048837.1	class C extended-spectrum beta-lactamase CMY-42	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_3941	1358	2556	-	tet(A)	1-1200/1200	========/======	1/1	99.92	99.83	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_397	18723	19871	+	blaMIR-18	1-1146/1146	========/======	3/3	100.00	96.61	ncbi	NG_049302.1	cephalosporin-hydrolyzing class C beta-lactamase MIR-18	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_525	1368	2555	-	tet(39)	1-1188/1188	===============	0/0	100.00	100.00	ncbi	NG_048137.1	tetracycline efflux MFS transporter Tet(39)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_525	5374	6216	+	blaOXA-58	1-843/843	===============	0/0	100.00	100.00	ncbi	NG_049798.1	carbapenem-hydrolyzing class D beta-lactamase OXA-58	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_525	9435	10250	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_553	500	1360	+	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_555	37510	38346	-	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_555	38346	39172	-	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_555	39209	40024	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_555	43537	44735	-	tet(A)	1-1200/1200	========/======	1/1	99.92	99.92	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_555	45664	46524	-	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_561	947	2145	+	tet(A)	1-1200/1200	========/======	1/1	99.92	99.92	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_562	107	933	-	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_562	970	1785	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_570	2175	2729	+	aac(6')-Ib-AKT	1-555/555	===============	0/0	100.00	99.82	ncbi	NG_052358.1	AAC(6')-Ib family aminoglycoside 6'-N-acetyltransferase	AMIKACIN;KANAMYCIN;TOBRAMYCIN
+input_files/SH_assembly_edited.fa	edge_570	2810	3610	+	blaOXA-35	1-801/801	===============	0/0	100.00	100.00	ncbi	NG_049642.1	OXA-10 family oxacillin-hydrolyzing class D extended-spectrum beta-lactamase OXA-35	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_570	4112	4951	+	sul1	1-840/840	===============	0/0	100.00	100.00	ncbi	NG_048082.1	sulfonamide-resistant dihydropteroate synthase Sul1	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_63	75386	76165	+	aph(3')-VIa	1-780/780	===============	0/0	100.00	100.00	ncbi	NG_047448.1	aminoglycoside O-phosphotransferase APH(3')-VIa	AMIKACIN;KANAMYCIN
+input_files/SH_assembly_edited.fa	edge_63	111552	112106	-	aac(6')-Ib'	1-555/555	===============	0/0	100.00	100.00	ncbi	NG_051695.1	aminoglycoside N-acetyltransferase AAC(6')-Ib'	GENTAMICIN
+input_files/SH_assembly_edited.fa	edge_63	112245	112697	-	arr-7	1-453/453	===============	0/0	100.00	100.00	ncbi	NG_048585.1	NAD(+)--rifampin ADP-ribosyltransferase Arr-7	RIFAMYCIN
+input_files/SH_assembly_edited.fa	edge_63	112822	113622	-	blaVIM-4	1-801/801	===============	0/0	100.00	100.00	ncbi	NG_050367.1	subclass B1 metallo-beta-lactamase VIM-4	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_63	126525	127163	+	catB7	1-639/639	===============	0/0	100.00	98.75	ncbi	NG_047614.1	type B-4 chloramphenicol O-acetyltransferase CatB7	CHLORAMPHENICOL
+input_files/SH_assembly_edited.fa	edge_66	16193	16390	+	crpP	1-198/198	===============	0/0	100.00	95.45	ncbi	NG_062203.1	ciprofloxacin resistance protein CrpP	FLUOROQUINOLONE
+input_files/SH_assembly_edited.fa	edge_696	4808	6013	+	tet(B)	1-1206/1206	===============	0/0	100.00	100.00	ncbi	NG_048163.1	tetracycline efflux MFS transporter Tet(B)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_698	1945	2586	+	catA2	1-642/642	===============	0/0	100.00	99.69	ncbi	NG_047596.1	type A-2 chloramphenicol O-acetyltransferase CatII	CHLORAMPHENICOL
+input_files/SH_assembly_edited.fa	edge_71	407476	408698	+	blaPDC-374	1-1215/1215	========/======	1/8	100.00	98.77	ncbi	NG_065926.1	class C beta-lactamase PDC-374	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_71	421025	421831	-	aph(3')-IIb	1-807/807	===============	0/0	100.00	98.76	ncbi	NG_047424.1	aminoglycoside O-phosphotransferase APH(3')-IIb	KANAMYCIN
+input_files/SH_assembly_edited.fa	edge_755	7164	8369	+	tet(B)	1-1206/1206	===============	0/0	100.00	100.00	ncbi	NG_048163.1	tetracycline efflux MFS transporter Tet(B)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_779	113057	114203	+	blaCMY-34	1-1146/1146	========/======	1/1	100.00	97.82	ncbi	NG_048829.1	class C beta-lactamase CMY-34	CEPHALOSPORIN
+input_files/SH_assembly_edited.fa	edge_792	259953	260777	-	blaOXA-120	1-825/825	===============	0/0	100.00	99.39	ncbi	NG_049419.1	OXA-51 family carbapenem-hydrolyzing class D beta-lactamase OXA-120	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_798	3318	4145	+	blaOXA-72	1-828/828	===============	0/0	100.00	100.00	ncbi	NG_049813.1	OXA-24 family carbapenem-hydrolyzing class D beta-lactamase OXA-72	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_799	1092	2264	-	blaMCA	1-1173/1173	===============	0/0	100.00	99.49	ncbi	NG_055474.1	MCA family class C beta-lactamase	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_799	6271	7746	+	msr(E)	1-1476/1476	===============	0/0	100.00	100.00	ncbi	NG_048007.1	ABC-F type ribosomal protection protein Msr(E)	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_799	7802	8686	+	mph(E)	1-885/885	===============	0/0	100.00	99.89	ncbi	NG_064660.1	Mph(E) family macrolide 2'-phosphotransferase	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_808	118	978	-	aac(3)-IId	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_047251.1	aminoglycoside N-acetyltransferase AAC(3)-IId	GENTAMICIN
+input_files/SH_assembly_edited.fa	edge_809	2839	3312	+	dfrA17	1-474/474	===============	0/0	100.00	99.79	ncbi	NG_047710.1	trimethoprim-resistant dihydrofolate reductase DfrA17	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_809	3443	4231	+	aadA5	1-789/789	===============	0/0	100.00	100.00	ncbi	NG_047357.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA5	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_813	139	999	-	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_814	886	1359	+	dfrA17	1-474/474	===============	0/0	100.00	99.79	ncbi	NG_047710.1	trimethoprim-resistant dihydrofolate reductase DfrA17	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_814	1490	2278	+	aadA5	1-789/789	===============	0/0	100.00	100.00	ncbi	NG_047357.1	ANT(3'')-Ia family aminoglycoside nucleotidyltransferase AadA5	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_819	1376	2574	-	tet(A)	1-1200/1200	========/======	1/1	99.92	99.92	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_819	3967	4803	-	aph(6)-Id	1-837/837	===============	0/0	100.00	100.00	ncbi	NG_047464.1	aminoglycoside O-phosphotransferase APH(6)-Id	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_819	4803	5629	-	aph(3'')-Ib	1-828/828	========/======	1/1	99.88	99.88	ncbi	NG_056002.2	aminoglycoside O-phosphotransferase APH(3'')-Ib	STREPTOMYCIN
+input_files/SH_assembly_edited.fa	edge_819	5666	6481	-	sul2	1-816/816	===============	0/0	100.00	99.88	ncbi	NG_051852.1	sulfonamide-resistant dihydropteroate synthase Sul2	SULFONAMIDE
+input_files/SH_assembly_edited.fa	edge_819	6727	7587	-	blaTEM-1	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_050145.1	class A broad-spectrum beta-lactamase TEM-1	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_819	9961	10821	+	aac(3)-IId	1-861/861	===============	0/0	100.00	100.00	ncbi	NG_047251.1	aminoglycoside N-acetyltransferase AAC(3)-IId	GENTAMICIN
+input_files/SH_assembly_edited.fa	edge_820	7256	8454	+	tet(A)	1-1200/1200	========/======	5/5	99.75	99.50	ncbi	NG_048154.1	tetracycline efflux MFS transporter Tet(A)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_821	436	1357	+	mph(A)	1-921/921	========/======	1/1	100.00	99.67	ncbi	NG_047986.1	Mph(A) family macrolide 2'-phosphotransferase	MACROLIDE
+input_files/SH_assembly_edited.fa	edge_825	2123	2596	+	dfrA17	1-474/474	===============	0/0	100.00	99.79	ncbi	NG_047710.1	trimethoprim-resistant dihydrofolate reductase DfrA17	TRIMETHOPRIM
+input_files/SH_assembly_edited.fa	edge_838	320297	321061	-	cphA7	1-765/765	===============	0/0	100.00	96.21	ncbi	NG_050400.1	subclass B2 metallo-beta-lactamase CphA7	CARBAPENEM
+input_files/SH_assembly_edited.fa	edge_841	1785070	1785723	-	catA4	1-654/654	========/======	2/2	99.85	98.17	ncbi	NG_047569.1	type A-4 chloramphenicol O-acetyltransferase	CHLORAMPHENICOL
+input_files/SH_assembly_edited.fa	edge_841	3711548	3712744	+	tet(J)	1-1197/1197	===============	0/0	100.00	99.33	ncbi	NG_048199.1	tetracycline efflux MFS transporter Tet(J)	TETRACYCLINE
+input_files/SH_assembly_edited.fa	edge_924	81530	82390	+	blaSHV-145	1-861/861	===============	0/0	100.00	99.88	ncbi	NG_050019.1	class A beta-lactamase SHV-145	BETA-LACTAM
+input_files/SH_assembly_edited.fa	edge_933	15973	17592	-	mcr-10.1	1-1620/1620	===============	0/0	100.00	100.00	ncbi	NG_066767.1	phosphoethanolamine--lipid A transferase MCR-10.1	COLISTIN

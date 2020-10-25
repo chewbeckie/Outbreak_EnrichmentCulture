@@ -56,7 +56,7 @@ process mash_plasmids {
         file(fa) from pls_fa
         
     output:
-        file("*.tsv")
+        file("*.tsv") into pls_result
     
     script:
     if (params.contigs_as_ref){
@@ -105,7 +105,7 @@ process mash_chromosomes {
         file(fa) from chr_fa
         
     output:
-        file("*.tsv")
+        file("*.tsv") into chr_result
     
     script:
     if (params.contigs_as_ref){
