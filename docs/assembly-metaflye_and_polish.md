@@ -17,7 +17,7 @@ sampleId,longread
 sample_a,path/to/longread
 ```
 
-3. specify the genome size (`params.gs`) in the `assembly-metaflye_and_polish.nf`, the genome size is set at 100m for the generation of WG/SH assemblies.
+3. specify the genome size (`params.gs`) in the `assembly-metaflye_and_polish.nf`, the genome size is set at 100m for the generation of locB/locA assemblies.
 
 4. *(optional)* specify directory locations for input folder and output folder in `assembly-metaflye_and_polish.config`.
 
@@ -25,7 +25,7 @@ sample_a,path/to/longread
 ```
 assembly-metaflye_and_polish.nf -c assembly-metaflye_and_polish.config \
  --shortreads shortreads.csv --longreads longreads.csv \
- --contigname SH \
+ --contigname locA \
  -profile conda,pbs
 ```
 

@@ -8,8 +8,8 @@ params.out
 //run table files with file name and the path to read1 and read2 of HiC data*/
 params.index //="$params.InputDir/hicreads.csv"
 //path to reference genome
-params.contig  //="$params.InputDir/reference_genomes/SH_assembly_edited.fa" or "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
-params.contigname //="SH" //"WG"
+params.contig  //="$params.InputDir/reference_genomes/locA_assembly_edited.fa" or "$params.InputDir/reference_genomes/locB_assembly_edited.fa"
+params.contigname //="locA" //"locB"
 contigs = file(params.contig)
 location = params.contigname
 

@@ -25,14 +25,14 @@ User should supply the following (please don't use relative path, it won't work)
 
 The nextflow workflow script can be ran by using the following command 
 ```
-./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa --krakendb minikraken2_v1_8GB \
+./contigs_annotation.nf --name locA --contigs locA_assembly_edited.fa --krakendb minikraken2_v1_8GB \
 --plspath input_files/plsdb_genomes/*.fa --chrpath input_files/chr_genomes/*.fa \
 --chr_info complete_assembly_enterobacteriaceae_chromosome_info.csv --pls_ino plsdb.tsv
 ```
 
 Alternatively, if .msh sketches are available, use this command
 ```
-./contigs_annotation.nf --name SH --contigs SH_assembly_edited.fa --krakendb minikraken2_v1_8GB \
+./contigs_annotation.nf --name locA --contigs locA_assembly_edited.fa --krakendb minikraken2_v1_8GB \
 --plsmsh plsdb.msh --chrpath chr.msh \
 --chr_info complete_assembly_enterobacteriaceae_chromosome_info.csv --pls_ino plsdb.tsv
 ```

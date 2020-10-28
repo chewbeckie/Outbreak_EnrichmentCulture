@@ -9,14 +9,14 @@
 params.out //= "output_files"
 
 // run table files with sample name and paths to read1, read2 
-params.shortreads //= "$params.InputDir/shortreads_SH.csv" or "$params.InputDir/shortreads_WG.csv"
+params.shortreads //= "$params.InputDir/shortreads_locA.csv" or "$params.InputDir/shortreads_locB.csv"
 // sample name and path to long read files 
-params.longreads //= "$params.InputDir/longreads_SH.csv" or "$params.InputDir/longreads_WG.csv"
+params.longreads //= "$params.InputDir/longreads_locA.csv" or "$params.InputDir/longreads_locB.csv"
 
 // user-defined genome names
-params.contigname //= "SH" or "WG"
+params.contigname //= "locA" or "locB"
 // path to genome file (if supplied, assembly steps will be skipped)
-params.contig //= "$params.InputDir/reference_genomes/SH_assembly_edited.fa" or "$params.InputDir/reference_genomes/WG_assembly_edited.fa"
+params.contig //= "$params.InputDir/reference_genomes/locA_assembly_edited.fa" or "$params.InputDir/reference_genomes/locB_assembly_edited.fa"
 // setting for metaflye
 params.gs = "100m"
 

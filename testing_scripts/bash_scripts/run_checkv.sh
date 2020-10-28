@@ -8,25 +8,29 @@
 #################
 
 # Set the resource requirements; 1 CPU, 5 GB memory and 5 minutes wall time.
-#PBS -N 20200617_metaflye_SH_job
-#PBS -l ncpus=16
-#PBS -l mem=40GB
-#PBS -l walltime=200:00:00 
+#PBS -N 20200721_checkV
+#PBS -l ncpus=20
+#PBS -l mem=60gb
+#PBS -l walltime=12:00:00 
+#PBS -l centos6_node=yes
 
 # There are several queues e.g. workq, smallq and others
-#PBS -q medq
+#PBS -q workq
 
 # Send email on abort, begin and end. 
 # CHANGE 999777 to your staff or student number!
 #PBS -m abe 
 #PBS -M 149306@uts.edu.au
 
-# define input
-reads="/shared/homes/149306/metaflye_testing/promethion_run/HS.pass.fastq"
-outdir="/shared/homes/149306/metaflye_testing/SH_metaflye"
+###############
+# setting variables
+###############
+contigs="locA_assembly_edited.fa"
+output_directory="checkV_output"
+database="checkv-db-v0.6"
 
-# commands
-source activate metaflye
-flye --nano-raw $reads \
---meta --genome-size 5m \
--t 16 -o $outdir
+###############
+# Start the Job
+###############
+source activate checkv
+checkv end_to_end $contigs $output_directory -t 16 -d $database

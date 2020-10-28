@@ -1,6 +1,6 @@
 # assembly_map_vcall.nf usage
 
-This workflow is the integrated workflow for metagenomic genome assembly, read mapping, binning and variant calling. Firstly, steps from `assembly-metaflye_and_polish.nf` can be initiated optinally to prepare a genome assembly. Long reads were used to assembled into a draft genome using Flye, then short reads were used to polish the assembled genome. Afterwards, steps are same as `shortrd-map_and_bin.nf`. Short reads are mapped to the assembled contigs (SH and WG) by bwa. The BAM files are then used for binning with metaBAT2 and variant calling. This script requires the following as inputs:
+This workflow is the integrated workflow for metagenomic genome assembly, read mapping, binning and variant calling. Firstly, steps from `assembly-metaflye_and_polish.nf` can be initiated optinally to prepare a genome assembly. Long reads were used to assembled into a draft genome using Flye, then short reads were used to polish the assembled genome. Afterwards, steps are same as `shortrd-map_and_bin.nf`. Short reads are mapped to the assembled contigs (locA and locB) by bwa. The BAM files are then used for binning with metaBAT2 and variant calling. This script requires the following as inputs:
 
 * `--shortreads` - a `.csv` runtable with information about the sample name, path to read1 and path to read 2 of each individual illumina short readsets
     ```
@@ -17,7 +17,7 @@ The nextflow workflow script can be ran by using the following command (activate
 assembly_map_vcall.nf -c assembly_map_vcall.config \ 
     --shortreads path/to/shortreadstable.csv \
     --longreads path/to/longreadstable.csv \
-    --contig path/to/assembly_edited.fa --contigname SH \
+    --contig path/to/assembly_edited.fa --contigname locA \
     --out output_files -profile conda,pbs
 ```
 

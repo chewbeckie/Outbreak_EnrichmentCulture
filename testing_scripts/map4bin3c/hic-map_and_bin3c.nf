@@ -4,10 +4,10 @@
 
 //define parameters
 //run table files with file name and the path to read1 and read2*/
-params.index = "$baseDir/20200806_runtable.csv"
+params.index = "$baseDir/runtable.csv"
 params.outdir = "$baseDir/output_files"
-params.shcontigs = "/shared/homes/s1/outbreak/enrichment_culture/aug2020-assembilies/SH_assembly_edited.fa"
-params.wgcontigs = "/shared/homes/s1/outbreak/enrichment_culture/aug2020-assembilies/WG_assembly_edited.fa"
+params.shcontigs = "locA_assembly_edited.fa"
+params.wgcontigs = "locB_assembly_edited.fa"
 
 //setting for read trimming
 params.mean_quality = 15

@@ -8,12 +8,12 @@
 Parameter
 /*
 //run table files with sample name and paths to read1, read2 */
-params.shortreads //= "$params.InputDir/shortreads_SH.csv" or "$params.InputDir/shortreads_WG.csv"
+params.shortreads //= "$params.InputDir/shortreads_locA.csv" or "$params.InputDir/shortreads_locB.csv"
 //sample name and path to long read files
-params.longreads //= "$params.InputDir/longreads_SH.csv" or "$params.InputDir/longreads_WG.csv"
+params.longreads //= "$params.InputDir/longreads_locA.csv" or "$params.InputDir/longreads_locB.csv"
 
 //name of contig to be made
-params.contigname = //"SH" or "WG"
+params.contigname = //"locA" or "locB"
 
 //setting for metaflye
 params.gs = "100m"

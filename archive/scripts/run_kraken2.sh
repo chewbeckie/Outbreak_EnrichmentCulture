@@ -1,4 +1,5 @@
 #!/bin/bash
+# date = 20200511
 
 # Author: Johanna Wong
 
@@ -8,26 +9,26 @@
 #################
 
 # Set the resource requirements; 1 CPU, 5 GB memory and 5 minutes wall time.
-#PBS -N samsort
-#PBS -l ncpus=16
-#PBS -l mem=50GB
-#PBS -l walltime=120:00:00 
-#PBS -l centos6_node=no
+#PBS -N kraken_job
+#PBS -l ncpus=5
+#PBS -l mem=100GB
+#PBS -l walltime=12:00:00 
 
 # There are several queues e.g. workq, smallq and others
-#PBS -q i3
+#PBS -q workq
 
 # Send email on abort, begin and end. 
 # CHANGE 999777 to your staff or student number!
 #PBS -m abe 
 #PBS -M 149306@uts.edu.au
 
-#set variables
-workdir="/shared/homes/149306/outbreak/enrichment_culture/work_in_progress/bwa_testing/output_files/bamfiles"
+# define variable
+workdir="locA_kraken2_out"
+db="kraken2_db"
+contig="locA_assembly_edited.fa"
 
+# command
 cd $workdir
-source activate bwa
-for i in $workdir/EW*.bam; 
-do prefix=$(basename $i .bam);
-samtools
-samtools sort -@ 18 -o sorted_$prefix.bam $i ; done
+kraken2 --db $db $contig --threads 4 \
+--unclassified-out unclassified.tsv --classified-out classified.tsv \
+--memory-mapping --report report.tsv --output output.tsv --use-names

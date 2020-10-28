@@ -8,16 +8,16 @@ library(RColorBrewer)
 
 #------------------------------------------------------------------------------
 #define input and output here
-setwd("/mnt/Backup_ubby/WG_results/")
+setwd("contigs_annotate_results_20201025/locB_results/")
 
 #hic plasmid map.py result
-asdf_path <- "~/github/Outbreak_EnrichmentCulture/data/results/tax_links_WG.tsv"
+asdf_path <- "~/github/Outbreak_EnrichmentCulture/data/results/tax_links_locB.tsv"
 #ABRicate AMR gene screening result
-amr_path <- "WG_resfinder_amr.tsv"
+amr_path <- "locB_resfinder_amr.tsv"
 #ABRicate pMLST gene screening result
-pmlst_path <- "WG_plsfinder_pmlst.tsv"
+pmlst_path <- "locB_plsfinder_pmlst.tsv"
 #output summary path (as tsv)
-output_path <- "WG_amr_pmlst_plasmid_summary.tsv"
+output_path <- "locB_amr_pmlst_plasmid_summary.tsv"
 
 #------------------------------------------------------------------------------
 #input result from hic plasmid_map.py
@@ -51,8 +51,8 @@ amr<-read.table(amr_path,sep='\t', fill = T) %>%
   select(SEQUENCE, AMR, RESISTANCE) %>% 
   rename("contig" = SEQUENCE)
 
-#input pmlst result from abricate
-pmlst<- read.table(pmlst_path,sep='\t', fill = T) %>% 
+#input plsfinder result from abricate
+plsfinder<- read.table(pmlst_path,sep='\t', fill = T) %>% 
   set_names(c("FILE","SEQUENCE","START","END","STRAND","pMLST","COVERAGE",
               "COVERAGE_MAP","GAPS","percentCOVERAGE","percentIDENTITY",
               "DATABASE","ACCESSION","PRODUCT","RESISTANCE")) %>% 
@@ -60,12 +60,12 @@ pmlst<- read.table(pmlst_path,sep='\t', fill = T) %>%
   select(SEQUENCE, pMLST) %>% 
   rename("contig" = SEQUENCE)
 
-#link amr, pmlst and plasmid results together
+#link amr, plsfinder and plasmid results together
 key<-select(asdf, V1, V6) %>% 
   set_names(c("plasmid", "contig")) %>% 
   unique() %>% 
   left_join(.,amr, by = "contig") %>%
-  left_join(.,pmlst, by = "contig") %>% 
+  left_join(.,plsfinder, by = "contig") %>% 
   group_by(contig) %>% 
   summarise(plasmid = plasmid,
             AMR_genes = paste(AMR, collapse = ";"),

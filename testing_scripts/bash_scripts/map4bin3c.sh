@@ -23,10 +23,10 @@
 #PBS -M 149306@uts.edu.au
 
 # define input
-contigs="/shared/homes/s1/outbreak/enrichment_culture/aug2020-assembilies/SH_assembly_edited.fa"
-reads="/shared/homes/149306/outbreak/enrichment_culture/work_in_progress/hicseq_testing/bin3c_Aug2020/output_files/paired_reads/interleaved_HiC_EW.fq"
-out="/shared/homes/149306/outbreak/enrichment_culture/work_in_progress/hicseq_testing/bin3c_Aug2020/output_files/HiC_EW_SHctg.bam"
-work_dir="/shared/homes/149306/outbreak/enrichment_culture/work_in_progress/hicseq_testing/bin3c_Aug2020/"
+contigs="locA_assembly_edited.fa"
+reads="interleaved_HiC_EW.fq"
+out="HiC_EW_SHctg.bam"
+work_dir="bin3c_Aug2020/"
 # commands
 source activate bwa
 cd $work_dir

@@ -23,8 +23,8 @@
 #PBS -M 149306@uts.edu.au
 
 #set variables
-workdir="/shared/homes/s1/outbreak/enrichment_culture/work_in_progress/metabat2_testing"
-contigs="/shared/homes/s1/outbreak/enrichment_culture/aug2020-assembilies/SH_assembly_edited.fa"
+workdir="metabat2_testing"
+contigs="locA_assembly_edited.fa"
 
 #command
 cd $workdir

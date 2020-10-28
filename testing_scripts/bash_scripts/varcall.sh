@@ -12,8 +12,8 @@
 #PBS -m abe 
 #PBS -M 149306@uts.edu.au
 
-work_dir="/shared/homes/149306/outbreak/enrichment_culture/work_in_progress/varcall_testing"
-ref="/shared/homes/s1/outbreak/enrichment_culture/aug2020-assembilies/SH_assembly_edited.fa"
+work_dir="varcall_testing"
+ref="locA_assembly_edited.fa"
 
 source activate lofreq
 cd $work_dir
